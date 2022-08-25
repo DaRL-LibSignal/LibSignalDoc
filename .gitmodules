@@ -1,0 +1,4 @@
+[submodule "LibSignal"]
+	path = LibSignal
+	url = git@github.com:DaRL-LibSignal/LibSignal.git
+	branch = dev
