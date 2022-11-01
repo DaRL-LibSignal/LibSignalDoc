@@ -1,6 +1,6 @@
 # Contents
 
-## GET START(done)
+## GET START
 
 - Introduction
 - Install
@@ -38,4 +38,4 @@
 - Customize World
 - Customize Dataset
 
-## API REFERENCE(done)
+## API REFERENCE
