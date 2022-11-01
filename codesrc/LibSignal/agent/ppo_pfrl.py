@@ -1,25 +1,25 @@
-# from . import RLAgent
-# from common.registry import Registry
-#
-# import numpy as np
-#
-# import torch
-# import torch.nn as nn
-# from torch import optim
-#
-# from generator.lane_vehicle import LaneVehicleGenerator
-# from generator.intersection_phase import IntersectionPhaseGenerator
-# from generator.intersection_vehicle import IntersectionVehicleGenerator
-# from agent import utils
-#
-# import gym
-# import os
-# from collections import deque
-#
-# from pfrl.nn import Branched
-# import pfrl.initializers
-# from pfrl.agents import PPO
-# from pfrl.policies import SoftmaxCategoricalHead
+from . import RLAgent
+from common.registry import Registry
+
+import numpy as np
+
+import torch
+import torch.nn as nn
+from torch import optim
+
+from generator.lane_vehicle import LaneVehicleGenerator
+from generator.intersection_phase import IntersectionPhaseGenerator
+from generator.intersection_vehicle import IntersectionVehicleGenerator
+from agent import utils
+
+import gym
+import os
+from collections import deque
+
+from pfrl.nn import Branched
+import pfrl.initializers
+from pfrl.agents import PPO
+from pfrl.policies import SoftmaxCategoricalHead
 
 
 def lecun_init(layer, gain=1.0):
@@ -74,6 +74,9 @@ class IPPO_pfrl(RLAgent):
         self.optimizer = None
         self._build_model()
 
+    def __repr__():
+        return self.model
+
     def reset(self):
         inter_id = self.world.intersection_ids[self.rank]
         inter_obj = self.world.id2intersection[inter_id]
@@ -88,7 +91,7 @@ class IPPO_pfrl(RLAgent):
                                                           targets=["cur_phase"], negative=False)
         self.reward_generator = LaneVehicleGenerator(self.world, inter_obj, ["lane_waiting_time_count"],
                                                      in_only=True, average='all', negative=True)
-        self.vehicles_generator = IntersectionVehicleGenerator(self.world, inter_obj, ["lane_vehicles"])
+        # self.vehicles_generator = IntersectionVehicleGenerator(self.world, inter_obj, ["lane_vehicles"])
     def get_ob(self):
         x_obs = []
         x_obs.append(self.ob_generator.generate())
@@ -143,8 +146,10 @@ class IPPO_pfrl(RLAgent):
     def sample(self):
         return np.random.randint(0, self.action_space.n, self.sub_agents)
 
-    def remember(self, last_obs, last_phase, actions, rewards, obs, cur_phase, key):
-        self.replay_buffer.append((key, (last_obs, last_phase, actions, rewards, obs, cur_phase)))
+    def remember(self, last_obs, last_phase, actions, actions_prob, rewards, obs, cur_phase, done, key):
+        # reformat it later
+        self.replay_buffer.append((key, (obs, cur_phase, rewards, done)))
+        self.do_observe(obs, cur_phase, rewards, done)
 
     def _build_model(self):
         """
@@ -202,5 +207,4 @@ class IPPO_pfrl(RLAgent):
             os.makedirs(path)
         model_name = os.path.join(path, f'{e}_{self.rank}.pt')
         torch.save(self.model.state_dict(), model_name)
-
 

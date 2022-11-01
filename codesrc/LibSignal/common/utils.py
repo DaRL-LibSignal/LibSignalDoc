@@ -9,56 +9,7 @@ import logging
 from datetime import datetime
 
 from common.registry import Registry
-
-
-class SeverityLevelBetween(logging.Filter):
-    def __init__(self, min_level, max_level):
-        super().__init__()
-        self.min_level = min_level
-        self.max_level = max_level
-
-    def filter(self, record):
-        return self.min_level <= record.levelno < self.max_level
-
-
-def setup_logging(config):
-    root = logging.getLogger()
-
-    # Perform setup only if logging has not been configured
-    if not root.hasHandlers():
-        root.setLevel(logging.DEBUG)
-        log_formatter = logging.Formatter(
-            "%(asctime)s (%(levelname)s): %(message)s",
-            datefmt="%Y-%m-%d %H:%M:%S",
-        )
-
-        # Send INFO to stdout
-        handler_out = logging.StreamHandler(sys.stdout)
-        handler_out.addFilter(
-            SeverityLevelBetween(logging.INFO, logging.WARNING)
-        )
-        handler_out.setFormatter(log_formatter)
-        root.addHandler(handler_out)
-
-        # Send WARNING (and higher) to stderr
-        handler_err = logging.StreamHandler(sys.stderr)
-        handler_err.setLevel(logging.WARNING)
-        handler_err.setFormatter(log_formatter)
-        root.addHandler(handler_err)
-
-        logger_dir = os.path.join(
-            Registry.mapping['logger_mapping']['output_path'].path,
-            Registry.mapping['logger_mapping']['logger_setting'].param['log_dir'])
-        if not os.path.exists(logger_dir):
-            os.makedirs(logger_dir)
-
-        handler_file = logging.FileHandler(os.path.join(
-            logger_dir,
-            f"{config['model']['name']}_{datetime.now().strftime('%Y%m%d-%H%M%S')}.log")
-        )
-        handler_file.setLevel(logging.DEBUG)  # TODO: SET LEVEL
-        root.addHandler(handler_file)
-        return root
+import world
 
 
 def get_road_dict(roadnet_dict, road_id):
@@ -80,7 +31,10 @@ def build_index_intersection_map(roadnet_file):
         edge_adjacent_node_matrix]
     """
     roadnet_dict = json.load(open(roadnet_file, "r"))
-    valid_intersection_id = [node["id"] for node in roadnet_dict["intersections"] if not node["virtual"]]
+    virt = "virtual" # judge whether is virtual node, especially in convert_sumo file
+    if "gt_virtual" in roadnet_dict["intersections"][0]:
+        virt = "gt_virtual"
+    valid_intersection_id = [node["id"] for node in roadnet_dict["intersections"] if not node[virt]]
     node_id2idx = {}
     node_idx2id = {}
     edge_id2idx = {}
@@ -94,7 +48,7 @@ def build_index_intersection_map(roadnet_file):
     cur_num = 0
     # build the map between identity and index of node
     for node_dict in roadnet_dict["intersections"]:
-        if node_dict["virtual"]:
+        if node_dict[virt]:
             for node in node_dict["roads"]:
                 invalid_roads.append(node)
             continue
@@ -127,7 +81,7 @@ def build_index_intersection_map(roadnet_file):
     # build adjacent matrix for node (i.e the adjacent node of the node, and the 
     # adjacent edge of the node)
     for node_dict in roadnet_dict["intersections"]:
-        if node_dict["virtual"]:
+        if node_dict[virt]:
             continue        
         node_id = node_dict["id"]
         road_links = node_dict['roads']
@@ -161,10 +115,6 @@ def build_index_intersection_map(roadnet_file):
               'node_list': node_list, 'edge_list': edge_list}
     return result
 
-
-def load_config_dict(config_path):
-    result = json.load(open(config_path, 'r'))
-    return result
 
 
 def analyse_vehicle_nums(file_path):
@@ -282,5 +232,9 @@ def build_config(args):
     args_dict = vars(args)
     for key in args_dict:
         config.update({key: args_dict[key]})  # short access for important param
+
+    # add network(for FRAP and MPLight)
+    cityflow_setting = json.load(open(config['path'], 'r'))
+    config['traffic']['network'] = cityflow_setting['network'] if 'network' in cityflow_setting.keys() else None
     return config
 
