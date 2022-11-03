@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agents &mdash; LibSignal v1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="World" href="World.html" />
+    <link rel="prev" title="Dataset Introduction" href="Dataset%20Introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> LibSignal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Get Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getstart/Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getstart/Install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getstart/Start.html">Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Config%20Settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dataset%20Introduction.html">Dataset Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Agents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#baseagent">BaseAgent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rlagent">RLAgent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#default-generator-settings">Default Generator Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#imported-agent-and-customized-agent">Imported Agent and Customized Agent</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="World.html">World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generator.html">Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Other%20Usage.html">Other Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Start%20Experiment.html">Start Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Customize%20Agent.html">Customize Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Customize%20World.html">Customize World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Customize%20Dataset.html">Customize Dataset</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detailed/API/index.html">API Introduction</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">LibSignal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Agents</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/content/guide/Agents.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="agents">
+<h1>Agents<a class="headerlink" href="#agents" title="Permalink to this heading">¶</a></h1>
+<p>Agents is a list of <strong>Agent</strong> class objects. <strong>Agent</strong> class is the controller of traffic signals at single or multiple intersections. It can provide information of observation, phase, reward or others with <code class="docutils literal notranslate"><span class="pre">get_ob</span></code>, <code class="docutils literal notranslate"><span class="pre">get_phase</span></code>, <code class="docutils literal notranslate"><span class="pre">get_reward</span></code>. And it can also give lane level metric through <code class="docutils literal notranslate"><span class="pre">get_queue</span></code>, <code class="docutils literal notranslate"><span class="pre">get_delay</span></code>. The <strong>Agent</strong> class also gives action back to the simulator through <code class="docutils literal notranslate"><span class="pre">get_action</span></code>.
+Currently, <em><strong>LibSignal</strong></em> supports <strong>Non-RL based Agent</strong>, <strong>RL based Agent</strong>, <strong>Agent imported from other lib</strong> and <strong>Agent that users customized</strong>.</p>
+<section id="baseagent">
+<h2>BaseAgent<a class="headerlink" href="#baseagent" title="Permalink to this heading">¶</a></h2>
+<p><strong>BaseAgent</strong> class is used for creating a base agent and base methods. All the <strong>Agent</strong> classes must inherit <strong>BaseAgent</strong> class and override <code class="docutils literal notranslate"><span class="pre">get_ob</span></code>, <code class="docutils literal notranslate"><span class="pre">get_reward</span></code>, <code class="docutils literal notranslate"><span class="pre">get_action</span></code> and <code class="docutils literal notranslate"><span class="pre">get_action_prob</span></code> methods.</p>
+</section>
+<section id="rlagent">
+<h2>RLAgent<a class="headerlink" href="#rlagent" title="Permalink to this heading">¶</a></h2>
+<p><strong>RLAgent</strong> class is used for creating an RL-based agent. It would create <strong>Generator</strong>s of observation, phase, reward, queue and delay. It must recreate <strong>Generator</strong> in <code class="docutils literal notranslate"><span class="pre">__init__</span></code> and <code class="docutils literal notranslate"><span class="pre">reset</span></code> methods if an RL-based agent has different settings for observation, phase, reward, queue and delay.</p>
+<section id="default-generator-settings">
+<h3>Default Generator Settings<a class="headerlink" href="#default-generator-settings" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Observation</strong>: the default observation generator of an agent is <code class="docutils literal notranslate"><span class="pre">lane_count</span></code>, defined as the number of running vehicles on each lane.</p></li>
+<li><p><strong>Phase</strong>: the default phase generator of an agent is <code class="docutils literal notranslate"><span class="pre">phase</span></code>, defined as the current phase of the intersection.</p></li>
+<li><p><strong>Reward</strong>: the default reward generator of an agent is <code class="docutils literal notranslate"><span class="pre">lane_waiting_count</span></code>, defined as the number of waiting vehicles(speed less than 0.1m/s) on each lane.</p></li>
+<li><p><strong>Queue</strong>: the default queue generator of an agent is <code class="docutils literal notranslate"><span class="pre">lane_waiting_count</span></code>.</p></li>
+<li><p><strong>Delay</strong>: the default delay generator of an agent is <code class="docutils literal notranslate"><span class="pre">lane_delay</span></code>, defined as the average difference between the current speed of the vehicle and the maximum speed limit of this lane over all vehicles.</p></li>
+</ul>
+</section>
+</section>
+<section id="imported-agent-and-customized-agent">
+<h2>Imported Agent and Customized Agent<a class="headerlink" href="#imported-agent-and-customized-agent" title="Permalink to this heading">¶</a></h2>
+<p>For <strong>Imported Agent</strong> and <strong>Customized Agent</strong>, details can be found in <span class="xref myst">Customize Agent</span>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Dataset%20Introduction.html" class="btn btn-neutral float-left" title="Dataset Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="World.html" class="btn btn-neutral float-right" title="World" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, DaRL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

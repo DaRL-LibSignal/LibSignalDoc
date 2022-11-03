@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start Experiment &mdash; LibSignal v1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> LibSignal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Get Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getstart/Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getstart/Install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getstart/Start.html">Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/Config%20Settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/Dataset%20Introduction.html">Dataset Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/Agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/World.html">World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/Generator.html">Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/Metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/Other%20Usage.html">Other Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/Start%20Experiment.html">Start Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/Customize%20Agent.html">Customize Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/Customize%20World.html">Customize World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/Customize%20Dataset.html">Customize Dataset</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="detailed/API/index.html">API Introduction</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">LibSignal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Start Experiment</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/content/Quick start.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="start-experiment">
+<h1>Start Experiment<a class="headerlink" href="#start-experiment" title="Permalink to this heading">¶</a></h1>
+<p>This is a tutorial to help our users quickly start their experiments and get a grasp of how to implement the <strong>Agent</strong> class for their customized experiments</p>
+<p>Before start learning how to start the experiment, we recommend our users first see the <a class="reference internal" href="getstart/Introduction.html"><span class="doc std std-doc">Introduction</span></a> and <a class="reference internal" href="getstart/Start.html"><span class="doc std std-doc">Start</span></a>.</p>
+<p>The skeleton structure of LibSignal are shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Libsignal</span><span class="o">/</span>
+    <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+    <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+    <span class="n">environment</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">run</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">data</span><span class="o">/</span>
+        <span class="n">raw_data</span><span class="o">/</span><span class="n">example_datasets</span>
+        <span class="n">output_data</span><span class="o">/</span><span class="n">output_experiment_data</span>
+    <span class="n">configs</span><span class="o">/</span>
+        <span class="n">sim</span><span class="o">/</span><span class="n">simulator_configs</span><span class="o">.</span><span class="n">cfg</span>
+        <span class="n">tsc</span><span class="o">/</span><span class="n">task_param_configs</span><span class="o">.</span><span class="n">yml</span>
+    <span class="n">agent</span><span class="o">/</span><span class="p">{</span><span class="n">baseline</span><span class="p">}</span><span class="n">_agent</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">world</span><span class="o">/</span><span class="n">world_</span><span class="p">{</span><span class="n">simulator</span><span class="p">}</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">generator</span><span class="o">/</span><span class="p">{</span><span class="n">lane</span><span class="p">}</span><span class="n">_generator</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">trainer</span><span class="o">/</span><span class="p">{</span><span class="n">tsc</span><span class="p">}</span><span class="n">_trainer</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To run a traffic signal control experiment, a sim_configs.cfg and a param_configs.yml file must be provided first. The two files are stored under path <strong>\configs\sim\</strong> and <strong>\configs\tsc\</strong></p>
+<ul>
+<li><p>The sim_configs.cfg contains information to initialize the corresponding simulator engine, and road network and traffic flow information could be tracked through it.</p></li>
+<li><p>The param_configs.cfg contains information of model parameters, logger path, trainer parameters(training epoch, simulation time steps, etc.), world settings(save replay files or not, gui, etc).</p></li>
+</ul>
+</li>
+<li><p>Simulation type: Since LibSignal supports different simulators, the user should assign the simulator type before starting experiments. Our experiment workflow is highly uniform, so the configuration files will automatically adapt to the different simulators and need no extra effort to modify them.</p></li>
+<li><p>Agent type: LibSignal provides different baseline models in traffic signal control tasks and users could also customized there own models for their own experiments. Also models should be implemented within <strong>agent</strong> class under path <strong>\agent\</strong>. Details will be provided in later sections.</p></li>
+</ul>
+<section id="run-experiment-with-default-setting">
+<h2>Run Experiment with Default Setting<a class="headerlink" href="#run-experiment-with-default-setting" title="Permalink to this heading">¶</a></h2>
+<p>To start our default experiment setting, run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">run</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Then the default experiment setting will be automatically initiated ,and the experiment will thereafter start. </br></br></p>
+</section>
+<section id="changing-experiment-parameters">
+<h2>Changing Experiment Parameters<a class="headerlink" href="#changing-experiment-parameters" title="Permalink to this heading">¶</a></h2>
+<p>To change the experiment setting, we provide the following parameters:</p>
+<ul class="simple">
+<li><p><strong>-a: type of agent</strong> Users could change this parameter to other baseline methods or their own methods after registering it in the <strong>Register</strong> class</p></li>
+<li><p><strong>-w: type of simulator</strong>  Users could choose a specific simulator engine and run experiments in this environment. Currently, we support <em>CityFlow</em> and <em>SUMO</em> simulators.</p></li>
+<li><p><strong>-n: network name</strong>  Users could choose the network to instantiate in the <strong>World</strong> class. The network name should be contained in the <strong>\configs\sim\</strong> path. If our users want to use their own dataset, They should provide new .cfg files in the same directory and change this parameter to the same world. Before that, they should also place <em>roadnetFile</em> and <em>flowFile</em> at the position described in the config file.</p></li>
+</ul>
+</br>
+</section>
+<section id="inside-the-simulation">
+<h2>Inside the Simulation<a class="headerlink" href="#inside-the-simulation" title="Permalink to this heading">¶</a></h2>
+<p>Our LibSignal library provides an easy-to-use interface. Users can start running their customized experiments by “one clicking” run.py script.</p>
+<section id="initialization-and-preprocessing">
+<h3>Initialization and Preprocessing<a class="headerlink" href="#initialization-and-preprocessing" title="Permalink to this heading">¶</a></h3>
+<p>The <strong>World</strong>, <strong>Agent</strong>, <strong>Network</strong> parameters are major components of the experiments. Other detailed parameters should be provided through configuration file. The <em>__init__</em> and <em>config_registry</em> methods in <strong>Runner</strong> class helps pre-process all the detailed parameters and register all information into the <strong>Registry</strong> class through <strong>Interface</strong> objects. This process is carefully wrapped and only exposed to users through configuration files.</p>
+<ol class="arabic simple">
+<li><p><em><strong>*.cfg</strong></em> file in  <strong>\configs\sim\</strong> is directly used to initialize simulation experiment. It provides path of <em>roadnetFile</em> and <em>flowFile</em>. In these two files, traffic road network structure and traffic flow will be provided. At the same time, each traffic light’s phase(<em><strong>action space</strong></em> in RL terminology and intersection road structure(dimension of <em><strong>state</strong></em>) is also provided.</p></li>
+<li><p><em><strong>*.yml</strong></em> file in <strong>\configs\tsc\</strong> provides all detailed parameters for agents, training process, simulation process, etc. Users could define their own .yml file ,and these new parameters will overlay parameters defaulted provided in the base.yml and be processed by <strong>Interface</strong> class later.</p></li>
+</ol>
+</section>
+<section id="tsctrainer">
+<h3>TscTrainer<a class="headerlink" href="#tsctrainer" title="Permalink to this heading">¶</a></h3>
+<p>In <strong>TscTrainer</strong> class, <strong>Environment</strong>, <strong>Agent</strong>s, and <strong>World</strong> will be constructed.</p>
+<ul class="simple">
+<li><p>LibSignal provides <strong>environment</strong> class. It inherits from the abstract class <strong>gym.Env</strong>. In the <strong>Environment</strong>, it provides <em>__init__</em> to couple <strong>Agent</strong>’s and simulator ,which is wrapped with <strong>World</strong> class. And it provides <em>step</em> and <em>reset</em> functions to help the agent and simulation work synchronously.</p></li>
+<li><p><strong>Agent</strong>s is a list of <strong>Agent</strong> class objects. <strong>Agent</strong> class is the controller of traffic signals at single or multiple intersections. It can provide information of observation, phase, reward information with <em>get_ob</em>, <em>get_phase</em>, <em>get_reward</em>. And it can also give lane level metric through <em>get_queue</em>, <em>get_delay</em>. The <strong>Agent</strong> class also gives action back to the simulator through <em>get_action</em>. In RL-based agents, <em><strong>test</strong></em> should be set to <em><strong>True</strong></em> in <em>get_action</em> while testing agents performance. To customize the user’s own agent class, please refer to <span class="xref myst">How to customize your own class</span> to customize your own class)</p></li>
+<li><p><strong>world</strong> wraps the simulator inside. And it extracts and processes information from the simulator. The processed information is then passed to <strong>Agent</strong> class by <strong>Generator</strong>. Currently, we do not provide a document to support users’ own simulators.</p></li>
+</ul>
+<p>Models stored in the <strong>Agent</strong> class are trained in the <em>train</em> function. Metrics will be stored in the instantiated <strong>Metric</strong> class. Users could change the report information in <em>create_metric</em> function.</p>
+<p><strong>All the parameters initiated in the <em>__init__</em> have been preprocessed and registered in the Registry. And Registered information could be set in the <em><strong>.yml</strong></em> and <em><strong>.cfg</strong></em> file which are mentioned in <span class="xref myst">Initialization and Preprocessing</span></strong></p>
+</br>
+</section>
+</section>
+</section>
+<section id="tracing-the-experiment-outputs">
+<h1>Tracing the experiment outputs<a class="headerlink" href="#tracing-the-experiment-outputs" title="Permalink to this heading">¶</a></h1>
+</section>
+<section id="how-to-customize-your-own-class">
+<h1>How to customize your own class<a class="headerlink" href="#how-to-customize-your-own-class" title="Permalink to this heading">¶</a></h1>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, DaRL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

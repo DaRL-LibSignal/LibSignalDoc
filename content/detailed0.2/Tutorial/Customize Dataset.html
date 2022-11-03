@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customize Dataset &mdash; LibSignal v1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> LibSignal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Get Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getstart/Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getstart/Install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getstart/Start.html">Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Config%20Settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Dataset%20Introduction.html">Dataset Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/World.html">World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Generator.html">Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Other%20Usage.html">Other Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Start%20Experiment.html">Start Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Customize%20Agent.html">Customize Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Customize%20World.html">Customize World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Customize%20Dataset.html">Customize Dataset</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../detailed/API/index.html">API Introduction</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">LibSignal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Customize Dataset</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/content/detailed0.2/Tutorial/Customize Dataset.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="customize-dataset">
+<h1>Customize Dataset<a class="headerlink" href="#customize-dataset" title="Permalink to this heading">¶</a></h1>
+<p>This documentation presents how to add a new dataset and apply it to the <em><strong>LibSignal</strong></em>.</p>
+<p>Currently, <em><strong>LibSignal</strong></em> supports the format of <code class="docutils literal notranslate"><span class="pre">.json</span></code> in CityFlow and <code class="docutils literal notranslate"><span class="pre">.net.xml</span></code> in SUMO for <strong>Road Network File</strong>, while <code class="docutils literal notranslate"><span class="pre">.json</span></code> in CityFlow and <code class="docutils literal notranslate"><span class="pre">.rou.xml</span></code> in SUMO for <strong>Traffic Flow File</strong>. It is also required <code class="docutils literal notranslate"><span class="pre">.sumocfg</span></code> file in SUMO.</p>
+<p>For all datasets, <code class="docutils literal notranslate"><span class="pre">.cfg</span></code> file is required to configure basic information.</p>
+<section id="customize-road-network-file">
+<h2>Customize Road Network File<a class="headerlink" href="#customize-road-network-file" title="Permalink to this heading">¶</a></h2>
+<p>To begin with, we should create <strong>Road Network File</strong>. It stores the basic structure of a traffic network consisting of road, lane, and traffic light information. Here, we introduce how to create a <strong>Road Network File</strong> named “NewRoadNet” in CityFlow and SUMO.</p>
+<section id="cityflow">
+<h3>CityFlow<a class="headerlink" href="#cityflow" title="Permalink to this heading">¶</a></h3>
+<p>CityFlow’s <strong>Road Network File</strong> mainly consists of intersections and roads.</p>
+<p>For example, you can define <code class="docutils literal notranslate"><span class="pre">NewRoadNet.json</span></code> like this(Details can be found in <a class="reference external" href="https://cityflow.readthedocs.io/en/latest/roadnet.html">CityFlow.RoadNetworkFile</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;intersections&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="o">//</span> <span class="nb">id</span> <span class="n">of</span> <span class="n">the</span> <span class="n">intersection</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;intersection_1_0&quot;</span><span class="p">,</span>
+      <span class="o">//</span> <span class="n">coordinate</span> <span class="n">of</span> <span class="n">center</span> <span class="n">of</span> <span class="n">intersection</span>
+      <span class="s2">&quot;point&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="p">},</span>
+      <span class="o">//</span> <span class="n">width</span> <span class="n">of</span> <span class="n">the</span> <span class="n">intersection</span>
+      <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="o">//</span> <span class="n">roads</span> <span class="n">connected</span> <span class="n">to</span> <span class="n">the</span> <span class="n">intersection</span>
+      <span class="s2">&quot;roads&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;road_1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;road_2&quot;</span>
+      <span class="p">],</span>
+      <span class="o">//</span> <span class="n">roadLinks</span> <span class="n">of</span> <span class="n">the</span> <span class="n">intersection</span>
+      <span class="s2">&quot;roadLinks&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="o">//</span> <span class="s1">&#39;turn_left&#39;</span><span class="p">,</span> <span class="s1">&#39;turn_right&#39;</span><span class="p">,</span> <span class="s1">&#39;go_straight&#39;</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;go_straight&quot;</span><span class="p">,</span>
+          <span class="o">//</span> <span class="nb">id</span> <span class="n">of</span> <span class="n">starting</span> <span class="n">road</span>
+          <span class="s2">&quot;startRoad&quot;</span><span class="p">:</span> <span class="s2">&quot;road_1&quot;</span><span class="p">,</span>
+          <span class="o">//</span> <span class="nb">id</span> <span class="n">of</span> <span class="n">ending</span> <span class="n">road</span>
+          <span class="s2">&quot;endRoad&quot;</span><span class="p">:</span> <span class="s2">&quot;road_2&quot;</span><span class="p">,</span>
+          <span class="o">//</span> <span class="n">lanelinks</span> <span class="n">of</span> <span class="n">roadlink</span>
+          <span class="s2">&quot;laneLinks&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="o">//</span> <span class="kn">from</span> <span class="nn">startRoad</span><span class="s1">&#39;s startLaneIndex lane to endRoad&#39;</span><span class="n">s</span> <span class="n">endLaneIndex</span> <span class="n">lane</span>
+              <span class="s2">&quot;startLaneIndex&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+              <span class="s2">&quot;endLaneIndex&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="o">//</span> <span class="n">points</span> <span class="n">along</span> <span class="n">the</span> <span class="n">laneLink</span> <span class="n">which</span> <span class="n">describe</span> <span class="n">the</span> <span class="n">shape</span> <span class="n">of</span> <span class="n">laneLink</span>
+              <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                  <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
+                  <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">2</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                  <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                  <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span>
+                <span class="p">}</span>
+              <span class="p">]</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="o">//</span> <span class="n">traffic</span> <span class="n">light</span> <span class="n">plan</span> <span class="n">of</span> <span class="n">the</span> <span class="n">intersection</span>
+      <span class="s2">&quot;trafficLight&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;lightphases&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="o">//</span> <span class="n">default</span> <span class="n">duration</span> <span class="n">of</span> <span class="n">the</span> <span class="n">phase</span>
+            <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+            <span class="o">//</span> <span class="n">available</span> <span class="n">roadLinks</span> <span class="n">of</span> <span class="n">current</span> <span class="n">phase</span><span class="p">,</span> <span class="n">index</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">no</span><span class="o">.</span> <span class="n">of</span> <span class="n">roadlinks</span> <span class="n">defined</span> <span class="n">above</span><span class="o">.</span>
+            <span class="s2">&quot;availableRoadLinks&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="mi">0</span><span class="p">,</span>
+              <span class="mi">2</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="o">//</span> <span class="n">true</span> <span class="k">if</span> <span class="n">it</span><span class="s1">&#39;s a peripheral intersection (if it only connects to one road, this rule is not applied in SUMO)</span>
+      <span class="s2">&quot;virtual&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+      <span class="o">//</span> <span class="n">identify</span> <span class="n">the</span> <span class="n">virtual</span> <span class="n">intersections</span> <span class="n">of</span> <span class="n">SUMO</span><span class="p">,</span> <span class="n">this</span> <span class="n">key</span> <span class="n">word</span> <span class="n">appeared</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">file</span> <span class="n">about</span> <span class="n">converting</span> <span class="n">SUMO</span> <span class="n">file</span> <span class="n">to</span> <span class="n">CityFlow</span> <span class="n">file</span>
+      <span class="s2">&quot;gt_virtual&quot;</span><span class="p">:</span> <span class="n">false</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;roads&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="o">//</span> <span class="nb">id</span> <span class="n">of</span> <span class="n">road</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;road_1&quot;</span><span class="p">,</span>
+      <span class="o">//</span> <span class="nb">id</span> <span class="n">of</span> <span class="n">start</span> <span class="n">intersection</span>
+      <span class="s2">&quot;startIntersection&quot;</span><span class="p">:</span> <span class="s2">&quot;intersection_1&quot;</span><span class="p">,</span>
+      <span class="o">//</span> <span class="nb">id</span> <span class="n">of</span> <span class="n">end</span> <span class="n">intersection</span>
+      <span class="s2">&quot;endIntersection&quot;</span><span class="p">:</span> <span class="s2">&quot;intersection_2&quot;</span><span class="p">,</span>
+      <span class="o">//</span> <span class="n">points</span> <span class="n">along</span> <span class="n">the</span> <span class="n">road</span> <span class="n">which</span> <span class="n">describe</span> <span class="n">the</span> <span class="n">shape</span> <span class="n">of</span> <span class="n">the</span> <span class="n">road</span>
+      <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">200</span><span class="p">,</span>
+          <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="o">//</span> <span class="nb">property</span> <span class="n">of</span> <span class="n">each</span> <span class="n">lane</span>
+      <span class="s2">&quot;lanes&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+          <span class="s2">&quot;maxSpeed&quot;</span><span class="p">:</span> <span class="mf">16.67</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="sumo">
+<h3>SUMO<a class="headerlink" href="#sumo" title="Permalink to this heading">¶</a></h3>
+<p>SUMO’s <strong>Road Network File</strong> mainly consists of edges, junctions, connections and others.</p>
+<p>Here, we introduce how to create a simple road network named <code class="docutils literal notranslate"><span class="pre">NewRoadNet.net.xml</span></code>. Details can be found in <a class="reference external" href="https://sumo.dlr.de/docs/Networks/SUMO_Road_Networks.html">SUMO.RoadNetworkFile</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;net version=&quot;0.13&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;http://sumo.dlr.de/xsd/net_file.xsd&quot;&gt;
+
+    &lt;location netOffset=&quot;250.00,250.00&quot; convBoundary=&quot;0.00,0.00,500.00,500.00&quot; origBoundary=&quot;-250.00,-250.00,250.00,250.00&quot; projParameter=&quot;!&quot;/&gt;
+    
+    &lt;!--information about edge and its lanes--&gt;
+    &lt;edge id=&quot;:0_0&quot; function=&quot;internal&quot;&gt;
+        &lt;lane id=&quot;:0_0_0&quot; index=&quot;0&quot; speed=&quot;36.00&quot; length=&quot;2.58&quot; shape=&quot;3.25,1.65 2.55,1.75 2.05,2.05 1.75,2.55 1.65,3.25&quot;/&gt;
+    &lt;/edge&gt;
+    &lt;edge id=&quot;:1_0&quot; function=&quot;internal&quot;&gt;
+        &lt;lane id=&quot;:1_0_0&quot; index=&quot;0&quot; speed=&quot;36.00&quot; length=&quot;2.58&quot; shape=&quot;1.65,496.75 1.75,497.45 2.05,497.95 2.55,498.25 3.25,498.35&quot;/&gt;
+    &lt;/edge&gt;
+    &lt;edge id=&quot;:2_0&quot; function=&quot;internal&quot;&gt;
+        &lt;lane id=&quot;:2_0_0&quot; index=&quot;0&quot; speed=&quot;36.00&quot; length=&quot;2.58&quot; shape=&quot;496.75,498.35 497.45,498.25 497.95,497.95 498.25,497.45 498.35,496.75&quot;/&gt;
+    &lt;/edge&gt;
+    &lt;edge id=&quot;:3_0&quot; function=&quot;internal&quot;&gt;
+        &lt;lane id=&quot;:3_0_0&quot; index=&quot;0&quot; speed=&quot;36.00&quot; length=&quot;2.58&quot; shape=&quot;498.35,3.25 498.25,2.55 497.95,2.05 497.45,1.75 496.75,1.65&quot;/&gt;
+    &lt;/edge&gt;
+
+    &lt;edge id=&quot;0&quot; from=&quot;0&quot; to=&quot;1&quot; priority=&quot;-1&quot;&gt;
+        &lt;lane id=&quot;0_0&quot; index=&quot;0&quot; speed=&quot;36.00&quot; length=&quot;493.50&quot; shape=&quot;1.65,3.25 1.65,496.75&quot;/&gt;
+    &lt;/edge&gt;
+    &lt;edge id=&quot;1&quot; from=&quot;1&quot; to=&quot;2&quot; priority=&quot;-1&quot;&gt;
+        &lt;lane id=&quot;1_0&quot; index=&quot;0&quot; speed=&quot;36.00&quot; length=&quot;493.50&quot; shape=&quot;3.25,498.35 496.75,498.35&quot;/&gt;
+    &lt;/edge&gt;
+    &lt;edge id=&quot;2&quot; from=&quot;2&quot; to=&quot;3&quot; priority=&quot;-1&quot;&gt;
+        &lt;lane id=&quot;2_0&quot; index=&quot;0&quot; speed=&quot;36.00&quot; length=&quot;493.50&quot; shape=&quot;498.35,496.75 498.35,3.25&quot;/&gt;
+    &lt;/edge&gt;
+    &lt;edge id=&quot;3&quot; from=&quot;3&quot; to=&quot;0&quot; priority=&quot;-1&quot;&gt;
+        &lt;lane id=&quot;3_0&quot; index=&quot;0&quot; speed=&quot;36.00&quot; length=&quot;493.50&quot; shape=&quot;496.75,1.65 3.25,1.65&quot;/&gt;
+    &lt;/edge&gt;
+
+    &lt;!--information about intersections--&gt;
+    &lt;junction id=&quot;0&quot; type=&quot;priority&quot; x=&quot;0.00&quot; y=&quot;0.00&quot; incLanes=&quot;3_0&quot; intLanes=&quot;:0_0_0&quot; shape=&quot;0.05,3.25 3.25,3.25 3.25,0.05&quot;&gt;
+        &lt;request index=&quot;0&quot; response=&quot;0&quot; foes=&quot;0&quot; cont=&quot;0&quot;/&gt;
+    &lt;/junction&gt;
+    &lt;junction id=&quot;1&quot; type=&quot;priority&quot; x=&quot;0.00&quot; y=&quot;500.00&quot; incLanes=&quot;0_0&quot; intLanes=&quot;:1_0_0&quot; shape=&quot;3.25,499.95 3.25,496.75 0.05,496.75&quot;&gt;
+        &lt;request index=&quot;0&quot; response=&quot;0&quot; foes=&quot;0&quot; cont=&quot;0&quot;/&gt;
+    &lt;/junction&gt;
+    &lt;junction id=&quot;2&quot; type=&quot;priority&quot; x=&quot;500.00&quot; y=&quot;500.00&quot; incLanes=&quot;1_0&quot; intLanes=&quot;:2_0_0&quot; shape=&quot;499.95,496.75 496.75,496.75 496.75,499.95&quot;&gt;
+        &lt;request index=&quot;0&quot; response=&quot;0&quot; foes=&quot;0&quot; cont=&quot;0&quot;/&gt;
+    &lt;/junction&gt;
+    &lt;junction id=&quot;3&quot; type=&quot;priority&quot; x=&quot;500.00&quot; y=&quot;0.00&quot; incLanes=&quot;2_0&quot; intLanes=&quot;:3_0_0&quot; shape=&quot;496.75,3.25 499.95,3.25 496.75,0.05 496.75,3.25&quot;&gt;
+        &lt;request index=&quot;0&quot; response=&quot;0&quot; foes=&quot;0&quot; cont=&quot;0&quot;/&gt;
+    &lt;/junction&gt;
+
+    &lt;!--laneLinks of the intersection--&gt;
+    &lt;connection from=&quot;0&quot; to=&quot;1&quot; fromLane=&quot;0&quot; toLane=&quot;0&quot; via=&quot;:1_0_0&quot; dir=&quot;r&quot; state=&quot;M&quot;/&gt;
+    &lt;connection from=&quot;1&quot; to=&quot;2&quot; fromLane=&quot;0&quot; toLane=&quot;0&quot; via=&quot;:2_0_0&quot; dir=&quot;r&quot; state=&quot;M&quot;/&gt;
+    &lt;connection from=&quot;2&quot; to=&quot;3&quot; fromLane=&quot;0&quot; toLane=&quot;0&quot; via=&quot;:3_0_0&quot; dir=&quot;r&quot; state=&quot;M&quot;/&gt;
+    &lt;connection from=&quot;3&quot; to=&quot;0&quot; fromLane=&quot;0&quot; toLane=&quot;0&quot; via=&quot;:0_0_0&quot; dir=&quot;r&quot; state=&quot;M&quot;/&gt;
+
+    &lt;connection from=&quot;:0_0&quot; to=&quot;0&quot; fromLane=&quot;0&quot; toLane=&quot;0&quot; dir=&quot;s&quot; state=&quot;M&quot;/&gt;
+    &lt;connection from=&quot;:1_0&quot; to=&quot;1&quot; fromLane=&quot;0&quot; toLane=&quot;0&quot; dir=&quot;s&quot; state=&quot;M&quot;/&gt;
+    &lt;connection from=&quot;:2_0&quot; to=&quot;2&quot; fromLane=&quot;0&quot; toLane=&quot;0&quot; dir=&quot;s&quot; state=&quot;M&quot;/&gt;
+    &lt;connection from=&quot;:3_0&quot; to=&quot;3&quot; fromLane=&quot;0&quot; toLane=&quot;0&quot; dir=&quot;s&quot; state=&quot;M&quot;/&gt;
+
+&lt;/net&gt;
+</pre></div>
+</div>
+</section>
+</section>
+<section id="customize-traffic-flow-file">
+<h2>Customize Traffic Flow File<a class="headerlink" href="#customize-traffic-flow-file" title="Permalink to this heading">¶</a></h2>
+<p>Then, we should create <strong>Traffic Flow File</strong>. It defines the traffic flow and stores the vehicles’ information.
+Here, we introduce how to create a <strong>Traffic Flow File</strong> named <code class="docutils literal notranslate"><span class="pre">NewFlow</span></code> in CityFlow and SUMO.</p>
+<section id="id1">
+<h3>CityFlow<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<p>CityFlow’s traffic flow defines vehicles’ basic information, routes, depart time and others.</p>
+<p>For example, you can define <code class="docutils literal notranslate"><span class="pre">NewFlow.json</span></code> like this(Details can be found in <a class="reference external" href="https://cityflow.readthedocs.io/en/latest/flow.html">CityFlow.TrafficFlowFile</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+    <span class="o">//</span> <span class="n">vehicles</span><span class="s1">&#39; basic information    </span>
+    <span class="s2">&quot;vehicle&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;length&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+      <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+      <span class="s2">&quot;maxPosAcc&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+      <span class="s2">&quot;maxNegAcc&quot;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span>
+      <span class="s2">&quot;usualPosAcc&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+      <span class="s2">&quot;usualNegAcc&quot;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span>
+      <span class="s2">&quot;minGap&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>
+      <span class="s2">&quot;maxSpeed&quot;</span><span class="p">:</span> <span class="mf">11.11</span><span class="p">,</span>
+      <span class="s2">&quot;headwayTime&quot;</span><span class="p">:</span> <span class="mf">2.0</span>
+    <span class="p">},</span>
+    <span class="o">//</span> <span class="n">vehicle</span><span class="s1">&#39;s routes</span>
+    <span class="s2">&quot;route&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;road_0_1_0&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;road_1_1_0&quot;</span>
+    <span class="p">],</span>
+    <span class="o">//</span> <span class="n">interval</span> <span class="n">of</span> <span class="n">consecutive</span> <span class="n">vehicles</span>
+    <span class="s2">&quot;interval&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="o">//</span> <span class="n">start</span> <span class="n">time</span> <span class="n">of</span> <span class="n">generating</span> <span class="n">the</span> <span class="n">vehicle</span> 
+    <span class="s2">&quot;startTime&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="o">//</span> <span class="n">end</span> <span class="n">time</span> <span class="n">of</span> <span class="n">generating</span> <span class="n">the</span> <span class="n">vehicle</span> 
+    <span class="s2">&quot;endTime&quot;</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>SUMO<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<p>SUMO’s traffic flow defines different types of vehicles’ basic information, routes and depart time.</p>
+<p>For example, you can define <code class="docutils literal notranslate"><span class="pre">NewFlow.rou.xml</span></code> like this(Details can be found in <a class="reference external" href="https://sumo.dlr.de/docs/Definition_of_Vehicles%2C_Vehicle_Types%2C_and_Routes.html">SUMO.TrafficFlowFile</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;routes xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;http://sumo.dlr.de/xsd/routes_file.xsd&quot;&gt;
+    &lt;!--a type of vehicles&#39; basic information--&gt;
+    &lt;vType id=&quot;pkw&quot; length=&quot;4.30&quot; minGap=&quot;1.50&quot; speedFactor=&quot;normc(1.00,0.10,0.20,2.00)&quot; vClass=&quot;passenger&quot;/&gt;
+    &lt;!--vehicle&#39;s id, type and depart time--&gt;
+    &lt;vehicle id=&quot;124779_406_0&quot; type=&quot;pkw&quot; depart=&quot;25205.00&quot;&gt;
+        &lt;!--vehicle&#39;s routes--&gt;
+        &lt;route edges=&quot;28198821#3 32038051#0&quot;/&gt;
+    &lt;/vehicle&gt;
+    &lt;vehicle id=&quot;151372_418_0&quot; type=&quot;pkw&quot; depart=&quot;25207.00&quot;&gt;
+        &lt;route edges=&quot;130165204 27115123#3 32038051#0&quot;/&gt;
+    &lt;/vehicle&gt;
+&lt;/routes&gt;
+</pre></div>
+</div>
+</section>
+</section>
+<section id="customize-configuration-file">
+<h2>Customize Configuration File<a class="headerlink" href="#customize-configuration-file" title="Permalink to this heading">¶</a></h2>
+<p><strong>Configuration File</strong> defines the parameters and file path. It is stored in <code class="docutils literal notranslate"><span class="pre">LibSignal/configs/sim/</span></code> folder. Different simulators and datasets require different files.</p>
+<p>Here, we introduce how to create a <strong>Configuration File</strong> for a new dataset, named <code class="docutils literal notranslate"><span class="pre">NewNetwork</span></code>, that its <strong>Road Network File</strong>s are <code class="docutils literal notranslate"><span class="pre">NewRoadNet.json</span></code> and <code class="docutils literal notranslate"><span class="pre">NewRoadNet.net.xml</span></code> in CityFlow and SUMO, and <strong>Traffic Flow File</strong>s are <code class="docutils literal notranslate"><span class="pre">NewFlow.json</span></code> and <code class="docutils literal notranslate"><span class="pre">NewFlow.rou.xml</span></code> in CityFlow and SUMO respectively.</p>
+<section id="id3">
+<h3>CityFlow<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<p>For example, you can define <code class="docutils literal notranslate"><span class="pre">cityflow_NewNetwork.cfg</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;network&quot;</span><span class="p">:</span> <span class="s2">&quot;NewNetwork&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;interval&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+  <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;dir&quot;</span><span class="p">:</span> <span class="s2">&quot;data/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;roadnetFile&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data/NewNetwork/NewRoadNet.json&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;flowFile&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data/NewNetwork/NewFlow.json&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;rlTrafficLight&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;saveReplay&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="s2">&quot;roadnetLogFile&quot;</span><span class="p">:</span> <span class="s2">&quot;output_data/tsc/NewNetwork_ModelName/NewNetwork/0/replay/RunningTime.json&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;replayLogFile&quot;</span><span class="p">:</span> <span class="s2">&quot;output_data/tsc/NewNetwork_ModelName/NewNetwork/0/replay/RunningTime.txt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>SUMO<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<p>Users should create <code class="docutils literal notranslate"><span class="pre">.sumocfg</span></code> file that contains parameters for a traffic simulation before creating <code class="docutils literal notranslate"><span class="pre">.cfg</span></code> file. All <code class="docutils literal notranslate"><span class="pre">.sumocfg</span></code> files are stored in the corresponding dataset folder under <code class="docutils literal notranslate"><span class="pre">LibSingal/data/raw_data/</span></code> folder, for example, <code class="docutils literal notranslate"><span class="pre">NewNetwork.sumocfg</span></code> is stored in <code class="docutils literal notranslate"><span class="pre">LibSingal/data/raw_data/NewNetwork/</span></code> folder.</p>
+<p>First, you can define <code class="docutils literal notranslate"><span class="pre">NewNetwork.sumocfg</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">configuration</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nb">input</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">net</span><span class="o">-</span><span class="n">file</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;NewRoadNet.net.xml&quot;</span><span class="o">/&gt;</span>
+	<span class="o">&lt;</span><span class="n">route</span><span class="o">-</span><span class="n">files</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;NewFlow.rou.xml&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;/</span><span class="nb">input</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">time</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">begin</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">end</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;3600&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;/</span><span class="n">time</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">processing</span><span class="o">&gt;</span>
+		<span class="o">&lt;</span><span class="n">time</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">teleport</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;-1&quot;</span><span class="o">/&gt;</span>
+	<span class="o">&lt;/</span><span class="n">processing</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">configuration</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Then, you can define <code class="docutils literal notranslate"><span class="pre">sumo_NewNetwork.cfg</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;network&quot;</span><span class="p">:</span> <span class="s2">&quot;NewNetwork&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;interval&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+  <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;dir&quot;</span><span class="p">:</span> <span class="s2">&quot;data/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;combined_file&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data/NewNetwork/NewNetwork.sumocfg&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;roadnetFile&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data/NewNetwork/NewRoadNet.net.xml&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;flowFile&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data/NewNetwork/NewFlow.rou.xml&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;convertroadnetFile&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data/NewNetwork/ConvertedRoadNet.json&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;convertflowFile&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data/NewNetwork/ConvertedFlow.json&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;no_warning&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;debug&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;yellow_length&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s2">&quot;gui&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now that you have learned how to add a new <strong>Dataset</strong>, try the following commands to use this dataset!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">run</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">n</span> <span class="n">newnetwork</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, DaRL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

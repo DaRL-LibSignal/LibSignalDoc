@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customize World &mdash; LibSignal v1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> LibSignal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Get Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getstart/Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getstart/Install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getstart/Start.html">Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Config%20Settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Dataset%20Introduction.html">Dataset Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/World.html">World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Generator.html">Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Other%20Usage.html">Other Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Start%20Experiment.html">Start Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Customize%20Agent.html">Customize Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Customize%20World.html">Customize World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Customize%20Dataset.html">Customize Dataset</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../detailed/API/index.html">API Introduction</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">LibSignal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Customize World</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/content/detailed0.2/Tutorial/Customize World.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="customize-world">
+<h1>Customize World<a class="headerlink" href="#customize-world" title="Permalink to this heading">¶</a></h1>
+<p>This documentation overviews how to create a new world and relevant useful methods. Since <strong>World</strong> class wraps the simulator inside, please make sure the simulator has been installed successfully before creating your custom world.</p>
+<p>Here we would like to develop a new world, named <code class="docutils literal notranslate"><span class="pre">NewSim</span></code>, and wrap the new simulator <code class="docutils literal notranslate"><span class="pre">NewSim</span></code>.</p>
+<section id="create-a-new-world">
+<h2>Create a New World<a class="headerlink" href="#create-a-new-world" title="Permalink to this heading">¶</a></h2>
+<section id="create-a-new-world-class">
+<h3>Create a New World Class<a class="headerlink" href="#create-a-new-world-class" title="Permalink to this heading">¶</a></h3>
+<p>First, please create a new file <code class="docutils literal notranslate"><span class="pre">world_newsim.py</span></code> in the directory <code class="docutils literal notranslate"><span class="pre">LinSignal/world/</span></code> and write the following code into the file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">newsim</span>
+<span class="kn">from</span> <span class="nn">common.registry</span> <span class="kn">import</span> <span class="n">Registry</span>
+
+<span class="nd">@Registry</span><span class="o">.</span><span class="n">register_world</span><span class="p">(</span><span class="s1">&#39;newsim&#39;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">World</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newsim_config</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># section 1: initialize parameters and read traffic network from file</span>
+        <span class="c1"># initialize parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eng</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intersections</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id2intersection</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">all_roads</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">all_lanes</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fns</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># read traffic network file code</span>
+
+        <span class="c1"># section 2: create intersections, roads, lanes, roadlinks, lanelinks, etc.</span>
+        <span class="c1"># code</span>
+
+        <span class="c1"># section 3: define info_functions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info_functions</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;vehicles&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_vehicles</span><span class="p">,</span>
+            <span class="s2">&quot;lane_count&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lane_vehicle_count</span><span class="p">,</span>
+            <span class="s2">&quot;lane_waiting_count&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lane_waiting_count</span><span class="p">,</span>
+            <span class="s2">&quot;lane_vehicles&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lane_vehicles</span><span class="p">,</span>
+            <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_current_time</span><span class="p">,</span>
+            <span class="s2">&quot;vehicle_distance&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_vehicle_distance</span><span class="p">,</span>
+            <span class="s2">&quot;pressure&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pressure</span><span class="p">,</span>
+            <span class="s2">&quot;lane_waiting_time_count&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lane_waiting_time_count</span><span class="p">,</span>
+            <span class="s2">&quot;lane_delay&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lane_delay</span><span class="p">,</span>
+            <span class="s2">&quot;real_delay&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_real_delay</span><span class="p">,</span>
+            <span class="s2">&quot;vehicle_trajectory&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_vehicle_trajectory</span><span class="p">,</span>
+            <span class="s2">&quot;history_vehicles&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_history_vehicles</span><span class="p">,</span>
+            <span class="s2">&quot;phase&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cur_phase</span><span class="p">,</span>
+            <span class="s2">&quot;throughput&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cur_throughput</span><span class="p">,</span>
+            <span class="s2">&quot;averate_travel_time&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_average_travel_time</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">_update_infos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p>You can see that we first register the new world using <code class="docutils literal notranslate"><span class="pre">Registry</span></code>. Then we define <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> and some methods that must be implemented.</p>
+<p>Section 1 of <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> is to read information from the traffic network file and initialize parameters, including engine, intersections, roads, lanes and others, users could also customize the parameters they used later.</p>
+<p>Section 2 of <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> is to create intersections, roads and other required parameters according to the road network file read from Section 1. Since the format of <strong>Atomic Files</strong> for different simulators is different, different simulators have different building methods.</p>
+<p>Section 3 of <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>, we define <code class="docutils literal notranslate"><span class="pre">info_functions</span></code>, which aims to retrieve information from the environment and update information. In <code class="docutils literal notranslate"><span class="pre">info_functions</span></code>, the information and methods are mapped as key-value pairs. Users could also customize the information they want to get by constructing a key-value mapping between information names and methods. <strong>Note</strong>,
+the methods that appeared in the value list of <code class="docutils literal notranslate"><span class="pre">info_functions</span></code> must be implemented by calling interfaces of the simulator or user-defined methods.</p>
+<p>Then, we would introduce the methods that must be implemented when creating a new <strong>World</strong>.</p>
+</section>
+<section id="implement-subscribe">
+<h3>Implement subscribe()<a class="headerlink" href="#implement-subscribe" title="Permalink to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">subscribe</span></code> methods would subscribe information that users want to get. When initializing <strong>Generator</strong>s, <strong><strong>init</strong>()</strong> methods would call <code class="docutils literal notranslate"><span class="pre">subscribe</span></code> methods, so that the <strong>Generator</strong> class would call <code class="docutils literal notranslate"><span class="pre">generate()</span></code> method to obtain the corresponding information after each episode or each step. Note, the name of subscribed information must appear in the value list of <code class="docutils literal notranslate"><span class="pre">info_functions</span></code>.</p>
+<p>You can define <code class="docutils literal notranslate"><span class="pre">subscribe()</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Registry</span><span class="o">.</span><span class="n">register_world</span><span class="p">(</span><span class="s1">&#39;newsim&#39;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">World</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fns</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fns</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">fns</span> <span class="o">=</span> <span class="p">[</span><span class="n">fns</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fns</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">fn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">info_functions</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">fn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fns</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">fns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;info function </span><span class="si">%s</span><span class="s2"> not exists&quot;</span> <span class="o">%</span> <span class="n">fn</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="implement-update-infos">
+<h3>Implement _update_infos()<a class="headerlink" href="#implement-update-infos" title="Permalink to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">_update_infos</span></code> method would update the global world’s information after reset or each step.</p>
+<p>You can define <code class="docutils literal notranslate"><span class="pre">_update_infos()</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Registry</span><span class="o">.</span><span class="n">register_world</span><span class="p">(</span><span class="s1">&#39;newsim&#39;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">World</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_update_infos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fns</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="n">fn</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">info_functions</span><span class="p">[</span><span class="n">fn</span><span class="p">]()</span>
+</pre></div>
+</div>
+</section>
+<section id="implement-step">
+<h3>Implement step()<a class="headerlink" href="#implement-step" title="Permalink to this heading">¶</a></h3>
+<p>To make <strong>Agent</strong>s interact with <strong>World</strong>, we should implement <code class="docutils literal notranslate"><span class="pre">step()</span></code> method. It takes actions generated by <strong>Agent</strong> as input, performs the actions in units of intersections, and then updates the information, including global information, measurements and trajectory, etc.</p>
+<p>You can define <code class="docutils literal notranslate"><span class="pre">step()</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Registry</span><span class="o">.</span><span class="n">register_world</span><span class="p">(</span><span class="s1">&#39;newsim&#39;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">World</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># section 1: take action to the intersections</span>
+        <span class="k">if</span> <span class="n">action</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">intersection</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intersections</span><span class="p">):</span>
+                <span class="n">intersection</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eng</span><span class="o">.</span><span class="n">next_step</span><span class="p">()</span>
+
+        <span class="c1"># section 2: update information</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_infos</span><span class="p">()</span>
+
+        <span class="c1"># section 3: update other information</span>
+        <span class="c1"># code</span>
+</pre></div>
+</div>
+</section>
+<section id="implement-reset">
+<h3>Implement reset()<a class="headerlink" href="#implement-reset" title="Permalink to this heading">¶</a></h3>
+<p>Here, we take CityFlow as an example, you can define <code class="docutils literal notranslate"><span class="pre">reset()</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Registry</span><span class="o">.</span><span class="n">register_world</span><span class="p">(</span><span class="s1">&#39;newsim&#39;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">World</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># section 1: reconnect engine, in CityFlow:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eng</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+        <span class="c1"># section 2: reset intersections&#39; information</span>
+        <span class="k">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">intersections</span><span class="p">:</span>
+            <span class="n">I</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+        <span class="c1"># section 3: reset related information</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_infos</span><span class="p">()</span>
+
+        <span class="c1"># section 4: reset other information</span>
+        <span class="c1"># code</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="create-a-new-intersection">
+<h2>Create a New Intersection<a class="headerlink" href="#create-a-new-intersection" title="Permalink to this heading">¶</a></h2>
+<section id="create-a-new-intersection-class">
+<h3>Create a New Intersection Class<a class="headerlink" href="#create-a-new-intersection-class" title="Permalink to this heading">¶</a></h3>
+<p>First, please write the following code in the file <code class="docutils literal notranslate"><span class="pre">LinSignal/world/world_newsim.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Intersection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">intersection</span><span class="p">,</span> <span class="n">world</span><span class="p">):</span>
+        <span class="c1"># section 1: initialize parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">intersection</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eng</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">eng</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">roads</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">directions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out_roads</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_roads</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># section 2: set available phases and other related parameters</span>
+        <span class="c1"># code</span>
+
+    <span class="k">def</span> <span class="nf">_change_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">_get_direction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">sort_roads</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+</pre></div>
+</div>
+<p>You can see that in <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method, we take the world and intersection information as input. We define and initialize parameters, including the world this intersection belongs to, the roads and lanes, etc. Then, there exist different methods to set available phases and other related parameters for different parameters. Finally, the methods that are essential to <strong>Intersection</strong> class are listed.</p>
+<p>Section 1 of <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> is to define and initialize parameters, including the world this intersection belongs to, the roads and lanes, etc.</p>
+<p>Section 2 of <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> is to set available phases and other related parameters. There are different methods to implement this part because of the differences in the internal implementation of different simulators.</p>
+<p>Then, we would introduce the methods that must be implemented when creating a new <strong>Intersection</strong>.</p>
+</section>
+<section id="implement-change-phase">
+<h3>Implement _change_phase()<a class="headerlink" href="#implement-change-phase" title="Permalink to this heading">¶</a></h3>
+<p>For an intersection, it is needed to implement a method for switching traffic phases. <code class="docutils literal notranslate"><span class="pre">_change_phase()</span></code> provides an interface to change the current phase into the next phase by interacting with simulators. In <code class="docutils literal notranslate"><span class="pre">_change_phase()</span></code> method, <code class="docutils literal notranslate"><span class="pre">phase</span></code> in input parameters is the traffic light planned to change to.</p>
+<p>Take CityFlow as an example, you can define <code class="docutils literal notranslate"><span class="pre">_change_phase()</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Intersection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_change_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eng</span><span class="o">.</span><span class="n">set_tl_phase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">phase</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_phase</span> <span class="o">=</span> <span class="n">phase</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Implement step()<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">step()</span></code> method makes the intersection execute the action according to the interval, then updates the related information, including current_phase, current_phase_time, etc.</p>
+<p>Take CityFlow as an example. You can define <code class="docutils literal notranslate"><span class="pre">step()</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Intersection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># if current phase is yellow, then continue to finish the yellow phase</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_phase</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">yellow_phase_id</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_phase_time</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">yellow_phase_time</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_change_phase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">action_before_yellow</span><span class="p">],</span> <span class="n">interval</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">current_phase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_before_yellow</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">action_executed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_before_yellow</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">current_phase_time</span> <span class="o">+=</span> <span class="n">interval</span>
+                
+        <span class="c1"># if current phase is not yellow, then change the phase</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># if the phase planned to change to is the same as current phase, then just add the time of this phase</span>
+            <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_phase</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">current_phase_time</span> <span class="o">+=</span> <span class="n">interval</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># if there exist yellow light behind each green light, then the next phase should be yellow phase as a transitional</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">yellow_phase_time</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="c1"># in SUMO, yellow(red) phase is arranged behind each green light</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">if_sumo</span><span class="p">:</span>
+                            <span class="k">assert</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_phase</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">all_phases</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">yellow_phase_id</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_change_phase</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_phase</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">all_phases</span><span class="p">),</span> <span class="n">interval</span><span class="p">)</span>
+
+                        <span class="c1"># in CityFlow, yellow(red) phase is fixed in the first location in phase list</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_change_phase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yellow_phase_id</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">interval</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">action_before_yellow</span> <span class="o">=</span> <span class="n">action</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_change_phase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="n">action</span><span class="p">],</span> <span class="n">interval</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">current_phase</span> <span class="o">=</span> <span class="n">action</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">action_executed</span> <span class="o">=</span> <span class="n">action</span>
+
+        
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Implement reset()<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">reset</span></code> method is to reset current_phase, action_before_yellow and action_executed, etc. By default, the first phase after resetting the environment is the one in the first position in the phase list.</p>
+<p>Take CityFlow as an example. You can define <code class="docutils literal notranslate"><span class="pre">step()</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Intersection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># section 1: set current phase id to 0, and take current phase into the engine</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_phase</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_phase</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_phase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># true phase id (including yellow)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eng</span><span class="o">.</span><span class="n">set_tl_phase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_phase</span><span class="p">)</span>
+
+        <span class="c1"># section 2: reset other informations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_phase_time</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_before_yellow</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_executed</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Section 1 of <code class="docutils literal notranslate"><span class="pre">reset()</span></code> is to set the current phase to the one that occupies the first position in the phase list.</p>
+<p>Section 2 of <code class="docutils literal notranslate"><span class="pre">reset()</span></code> is to reset related information, including current phase time and others.</p>
+</section>
+<section id="implement-get-direction">
+<h3>Implement _get_direction()<a class="headerlink" href="#implement-get-direction" title="Permalink to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">_get_direction()</span></code> is to calculate the angle of the road for sorting roads later. The default order of roads is N-E-S-W. There are different calculation methods for different simulators.</p>
+<p>Take CityFlow as an example, the code for getting the direction of a road is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Intersection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_get_direction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">road</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">out</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">road</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">road</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">road</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">road</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">road</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">road</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">road</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">road</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tmp</span> <span class="k">if</span> <span class="n">tmp</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="n">tmp</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="implement-sort-roads">
+<h3>Implement sort_roads()<a class="headerlink" href="#implement-sort-roads" title="Permalink to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">sort_road()</span></code> is to sort roads, including in roads, out roads and others, by a specific order.</p>
+<p>Take CityFlow as an example, the code for sorting is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Intersection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">sort_roads</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">roads</span><span class="p">)),</span>
+                       <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directions</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">outs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">world</span><span class="o">.</span><span class="n">RIGHT</span> <span class="k">else</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">outs</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">roads</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">roads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">order</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">directions</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">directions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">order</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">outs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">order</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out_roads</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">roads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outs</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_roads</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">roads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outs</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span><span class="p">]</span>
+</pre></div>
+</div>
+</br>
+<p>Now that you have learned how to add a new world, try the following commands to use this world!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">run</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">w</span> <span class="n">newsim</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, DaRL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
