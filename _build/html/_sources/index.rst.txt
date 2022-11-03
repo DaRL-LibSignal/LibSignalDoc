@@ -16,11 +16,29 @@ Welcome to LibSignal's documentation!
 
 .. toctree::
    :maxdepth: 7
-   :caption: Detailed Guide:
+   :caption: User Guide:
 
    content/detailed/Params/params.md
    content/detailed/Experiment/index.rst
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Tutorial:
+
+   content/tutorial/Start Experiment.md
+   content/tutorial/Customize Agent.md
+   content/tutorial/Customize World.md
+   content/tutorial/Customize Dataset1.md
+
+
+
+.. toctree::
+   :maxdepth: 7
+   :caption: API Reference
+
    content/detailed/API/index.rst
+
+
 
 
 
