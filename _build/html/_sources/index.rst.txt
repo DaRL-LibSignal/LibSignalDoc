@@ -8,7 +8,7 @@ Welcome to LibSignal's documentation!
 
 .. toctree::
    :maxdepth: 3
-   :caption: Get Start:
+   :caption: Get Start
 
    content/getstart/Introduction.md
    content/getstart/Install.md
@@ -16,14 +16,19 @@ Welcome to LibSignal's documentation!
 
 .. toctree::
    :maxdepth: 7
-   :caption: User Guide:
+   :caption: User Guide
 
-   content/detailed/Params/params.md
-   content/detailed/Experiment/index.rst
+   content/guide/Config Settings.md
+   content/guide/Dataset Introduction.md
+   content/guide/Agents.md
+   content/guide/World.md
+   content/guide/Generator.md
+   content/guide/Metrics.md
+   content/guide/Other Usage.md
 
 .. toctree::
    :maxdepth: 3
-   :caption: Tutorial:
+   :caption: Tutorial
 
    content/tutorial/Start Experiment.md
    content/tutorial/Customize Agent.md
