@@ -28,9 +28,7 @@ Welcome to LibSignal's documentation!
    content/tutorial/Start Experiment.md
    content/tutorial/Customize Agent.md
    content/tutorial/Customize World.md
-   content/tutorial/Customize Dataset1.md
-
-
+   content/tutorial/Customize Dataset.md
 
 .. toctree::
    :maxdepth: 7
