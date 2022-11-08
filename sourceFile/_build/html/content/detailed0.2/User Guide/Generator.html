@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generator &mdash; LibSignal v1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> LibSignal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Get Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getstart/Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getstart/Install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getstart/Start.html">Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Config%20Settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Dataset%20Introduction.html">Dataset Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/World.html">World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Generator.html">Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Other%20Usage.html">Other Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Start%20Experiment.html">Start Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Customize%20Agent.html">Customize Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Customize%20World.html">Customize World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Customize%20Dataset.html">Customize Dataset</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../detailed/API/index.html">API Introduction</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">LibSignal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Generator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/content/detailed0.2/User Guide/Generator.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="generator">
+<h1>Generator<a class="headerlink" href="#generator" title="Permalink to this heading">¶</a></h1>
+<p><strong>Generator</strong> class aims to provide state, reward, phase and other information to <strong>Agent</strong> class by interacting with <strong>World</strong> class. The information is divided into phase, intersection and lane levels, corresponding to <strong>IntersectionPhaseGenerator</strong>, <strong>IntersectionVehicleGenerator</strong> and <strong>LaneVehicleGenerator</strong>.</p>
+<section id="basegenerator">
+<h2>BaseGenerator<a class="headerlink" href="#basegenerator" title="Permalink to this heading">¶</a></h2>
+<p><strong>BaseGenerator</strong> is an abstract class. It uses <code class="docutils literal notranslate"><span class="pre">generate</span></code> method to generate state or reward based on current simulation state. In <code class="docutils literal notranslate"><span class="pre">generate</span></code> method, it takes the name of the required information as parameters of input, then integrates the information, and outputs the values. Different types of generators have different methods to implement. It is required to override the <code class="docutils literal notranslate"><span class="pre">generate</span></code> method in other <strong>Generator</strong> classes, otherwise, it will display <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> message.</p>
+</section>
+<section id="intersectionphasegenerator">
+<h2>IntersectionPhaseGenerator<a class="headerlink" href="#intersectionphasegenerator" title="Permalink to this heading">¶</a></h2>
+<p><strong>IntersectionPhaseGenerator</strong> generates state or reward based on statistics of intersection phases. Currently, it supports the value of <code class="docutils literal notranslate"><span class="pre">cur_phase</span></code> to return. Details can be found in <span class="xref myst">API REFERENCE.IntersectionPhaseGenerator</span>.</p>
+</section>
+<section id="intersectionvehiclegenerator">
+<h2>IntersectionVehicleGenerator<a class="headerlink" href="#intersectionvehiclegenerator" title="Permalink to this heading">¶</a></h2>
+<p><strong>IntersectionVehicleGenerator</strong> generates state or reward based on statistics of intersection vehicles. Currently, it supports <code class="docutils literal notranslate"><span class="pre">vehicle_trajectory</span></code>, <code class="docutils literal notranslate"><span class="pre">lane_vehicles</span></code>, <code class="docutils literal notranslate"><span class="pre">history_vehicles</span></code> and <code class="docutils literal notranslate"><span class="pre">vehicle_distance</span></code> as parameters of input, and supports <code class="docutils literal notranslate"><span class="pre">vehicle_map</span></code>, <code class="docutils literal notranslate"><span class="pre">passed_count</span></code>, <code class="docutils literal notranslate"><span class="pre">passed_time_count</span></code>, <code class="docutils literal notranslate"><span class="pre">cur_phase</span></code> as output. Details can be found in <span class="xref myst">API REFERENCE.IntersectionVehicleGenerator</span>.</p>
+</section>
+<section id="lanevehiclegenerator">
+<h2>LaneVehicleGenerator<a class="headerlink" href="#lanevehiclegenerator" title="Permalink to this heading">¶</a></h2>
+<p><strong>LaneVehicleGenerator</strong> generates state or reward based on statistics of lane vehicles. Currently, it supports <code class="docutils literal notranslate"><span class="pre">lane_count</span></code>, <code class="docutils literal notranslate"><span class="pre">lane_waiting_count</span></code>, <code class="docutils literal notranslate"><span class="pre">lane_waiting_time_count</span></code>, <code class="docutils literal notranslate"><span class="pre">lane_delay</span></code> and <code class="docutils literal notranslate"><span class="pre">pressure</span></code> as parameters of input, and supports the same information as output. Details can be found in <span class="xref myst">API REFERENCE.LaneVehicleGenerator</span>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, DaRL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

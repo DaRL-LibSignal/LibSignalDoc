@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Other Usage &mdash; LibSignal v1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Start Experiment" href="../tutorial/Start%20Experiment.html" />
+    <link rel="prev" title="Metrics" href="Metrics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> LibSignal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Get Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getstart/Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getstart/Install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getstart/Start.html">Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Config%20Settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dataset%20Introduction.html">Dataset Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="World.html">World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generator.html">Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Metrics.html">Metrics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Other Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#task-and-trainer">Task and Trainer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#task">Task</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tsctask">TSCTask</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#trainer">Trainer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tsctrainer">TSCTrainer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#environment">Environment</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Start%20Experiment.html">Start Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Customize%20Agent.html">Customize Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Customize%20World.html">Customize World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Customize%20Dataset.html">Customize Dataset</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detailed/API/index.html">API Introduction</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">LibSignal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Other Usage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/content/guide/Other Usage.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="other-usage">
+<h1>Other Usage<a class="headerlink" href="#other-usage" title="Permalink to this heading">¶</a></h1>
+<section id="task-and-trainer">
+<h2>Task and Trainer<a class="headerlink" href="#task-and-trainer" title="Permalink to this heading">¶</a></h2>
+<section id="task">
+<h3>Task<a class="headerlink" href="#task" title="Permalink to this heading">¶</a></h3>
+<p><strong>BaseTask</strong> class is an abstract class, which is designed to improve <em><strong>LibSignal</strong></em>’s extensibility and make it suitable for different tasks. Currently, <em><strong>LibSignal</strong></em> only implements traffic signal tasks, creating <strong>TSCTask</strong> class to support it. It is required to override the <em>run</em> method in the subclass of <strong>BaseTask</strong>, otherwise, it will display <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> message.</p>
+<section id="tsctask">
+<h4>TSCTask<a class="headerlink" href="#tsctask" title="Permalink to this heading">¶</a></h4>
+<p>For traffic signal control tasks, <em><strong>LibSingal</strong></em> provides <strong>TSCTask</strong> class to manage the entire process. Users only need to call the <em>run</em> function to complete the task, including the train and test process.</p>
+</section>
+</section>
+<section id="trainer">
+<h3>Trainer<a class="headerlink" href="#trainer" title="Permalink to this heading">¶</a></h3>
+<p><strong>BaseTrainer</strong> decouples the different stages of a task which includes initializing parameters, setting random seeds for experiments to ensure the reproducibility of experiments, setting logger, and creating <strong>World</strong>, <strong>Agents</strong>, <strong>Metrics</strong> and <strong>Environment</strong> needed to train the models. Currently, <em><strong>LibSignal</strong></em> supports <strong>TSCTrainer</strong> class which inherits <strong>BaseTrainer</strong> class to train and test models under traffic signal control tasks.</p>
+<section id="tsctrainer">
+<h4>TSCTrainer<a class="headerlink" href="#tsctrainer" title="Permalink to this heading">¶</a></h4>
+<p><strong>TSCTrainer</strong> contains all the processes necessary for the traffic signal control task, including initialization and preprocessing, training and testing models.  Meanwhile, the running information will also be recorded by calling <em>writeLog</em> function.</p>
+<p>In process of initialization and preprocessing, <strong>World</strong>, <strong>Agents</strong>, <strong>Metrics</strong> and <strong>Environment</strong> will be created by calling <em>create_world</em>, <em>create_agents</em>, <em>create_metrics</em> and <em>create_env</em> functions. Then, models stored in the <strong>Agent</strong> class will be trained and tested by calling <em>train</em> and <em>test</em> functions. <strong>Metrics</strong> class is used for estimating model performance when training and testing the models. For details, see <span class="xref myst">World</span>, <span class="xref myst">Agents</span>, <span class="xref myst">Metrics</span> and <span class="xref myst">Environment</span>.</p>
+</section>
+</section>
+</section>
+<section id="environment">
+<h2>Environment<a class="headerlink" href="#environment" title="Permalink to this heading">¶</a></h2>
+<p><em><strong>LibSignal</strong></em> provides <strong>Environment</strong> class to help agents interact with the simulator. It inherits from the abstract class <strong>gym.Env</strong>. In the <strong>Environment</strong>, it provides <code class="docutils literal notranslate"><span class="pre">step</span></code> and <code class="docutils literal notranslate"><span class="pre">reset</span></code> functions to help the agent and simulator work synchronously. Users can also get information about observations, rewards, whether the process is done and others information users want to obtain.
+For details about <code class="docutils literal notranslate"><span class="pre">step</span></code> and <code class="docutils literal notranslate"><span class="pre">reset</span></code>, you can see <span class="xref myst">API REFERENCE.Environment</span> and <a class="reference external" href="https://www.gymlibrary.dev/api/core/">Gym Documentation</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Metrics.html" class="btn btn-neutral float-left" title="Metrics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tutorial/Start%20Experiment.html" class="btn btn-neutral float-right" title="Start Experiment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, DaRL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

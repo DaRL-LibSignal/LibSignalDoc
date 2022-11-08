@@ -1,6 +1,6 @@
 # Install
-
-## Source
+## Hands on Experience👉[Colab](https://colab.research.google.com/drive/1FrMTRsbSkZGAeN-Mh4PqWMI-SrDM3J7w?usp=share_link)
+## Install on your device with Source Code
 
 LibSingal provides installation from source code.
 Please execute the following command to install and configure  our environment.

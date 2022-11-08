@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Params &mdash; LibSignal v1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> LibSignal
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Get Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getstart/Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getstart/Install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getstart/Start.html">Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Config%20Settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Dataset%20Introduction.html">Dataset Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/World.html">World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Generator.html">Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/Other%20Usage.html">Other Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Start%20Experiment.html">Start Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Customize%20Agent.html">Customize Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Customize%20World.html">Customize World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/Customize%20Dataset.html">Customize Dataset</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../API/index.html">API Introduction</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">LibSignal</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Params</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/content/detailed/Params/params.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="params">
+<h1>Params<a class="headerlink" href="#params" title="Permalink to this heading">¶</a></h1>
+<section id="params-of-env-simulator">
+<h2>Params of Env Simulator<a class="headerlink" href="#params-of-env-simulator" title="Permalink to this heading">¶</a></h2>
+<p>This will introduce the details about environmental simulators’ Parameters</p>
+<section id="cityflow-config-file">
+<h3>CityFlow Config File<a class="headerlink" href="#cityflow-config-file" title="Permalink to this heading">¶</a></h3>
+<p>Referred from: https://cityflow.readthedocs.io/en/latest/start.html#data-access-api</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;interval&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+  <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;dir&quot;</span><span class="p">:</span> <span class="s2">&quot;data/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;roadnetFile&quot;</span><span class="p">:</span> <span class="s2">&quot;cityflow_1x1/roadnet.json&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;flowFile&quot;</span><span class="p">:</span> <span class="s2">&quot;cityflow_1x1/flow.json&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;rlTrafficLight&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;saveReplay&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="s2">&quot;roadnetLogFile&quot;</span><span class="p">:</span> <span class="s2">&quot;cityflow_1x1/replay/2022_07_19-09_28_40.json&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;replayLogFile&quot;</span><span class="p">:</span> <span class="s2">&quot;cityflow_1x1/replay/2022_07_19-09_28_40.txt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>interval: time of each simulation step (in seconds).</p></li>
+<li><p>seed: random seed.</p></li>
+<li><p>dir: root directory, all file path will be relative to this directory.</p></li>
+<li><p>roadnetFile: path for roadnet file.</p></li>
+<li><p>flowFile: path for flow file.</p></li>
+<li><p>rlTrafficLight: whether to enable traffic light control through python API. If set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, default traffic light plan defined in <code class="docutils literal notranslate"><span class="pre">roadnetFile</span></code> will be used.</p></li>
+<li><p>saveReplay: whether to save simulation for replay. If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">roadnetLogFile</span></code> and <code class="docutils literal notranslate"><span class="pre">replayLogFile</span></code> are required.</p></li>
+<li><p>roadnetLogFile: path for roadnet replay file. This is a special roadnet file for replay, not the same as <code class="docutils literal notranslate"><span class="pre">roadnetFile</span></code>.</p></li>
+<li><p>replayLogFile: path for replay. This file contains vehicle positions and traffic light situation of each simulation step.</p></li>
+</ul>
+</section>
+<section id="sumo-config-file">
+<h3>SUMO Config File<a class="headerlink" href="#sumo-config-file" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;interval&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+  <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;dir&quot;</span><span class="p">:</span> <span class="s2">&quot;data/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;combined_file&quot;</span><span class="p">:</span> <span class="s2">&quot;cityflow_1x1/cityflow_1x1.sumocfg&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;roadnetFile&quot;</span><span class="p">:</span> <span class="s2">&quot;cityflow_1x1/cityflow_1x1.net.xml&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;flowFile&quot;</span><span class="p">:</span> <span class="s2">&quot;cityflow_1x1/cityflow_1x1.rou.xml&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;convertroadnetFile&quot;</span><span class="p">:</span> <span class="s2">&quot;cityflow_1x1/cityflow_1x1_roadnet.json&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;convertflowFile&quot;</span><span class="p">:</span> <span class="s2">&quot;cityflow_1x1/cityflow_1x1_flow.json&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;no_warning&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;debug&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;yellow_length&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s2">&quot;gui&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>interval: time of each simulation step (in seconds).</p></li>
+<li><p>seed: random seed.</p></li>
+<li><p>dir: root directory, all file path will be relative to this directory.</p></li>
+<li><p>combined_file: path for SUMO configuration file.</p></li>
+<li><p>roadnetFile: path for SUMO roadnet file.</p></li>
+<li><p>flowFile: path for SUMO flow file.</p></li>
+<li><p>convertroadnetFile: path for SUMO roadnet file.</p></li>
+<li><p>convertflowFile: path for SUMO flow file.</p></li>
+<li><p><strong>no_warning:</strong></p></li>
+<li><p><strong>name:</strong></p></li>
+<li><p>yellow_length: default yellow time. The default is set to 5 s.</p></li>
+<li><p>gui: whether to use SUMO-GUI tools.</p></li>
+</ul>
+</section>
+</section>
+<section id="params-of-tsc-process-and-agents">
+<h2>Params of TSC Process and Agents<a class="headerlink" href="#params-of-tsc-process-and-agents" title="Permalink to this heading">¶</a></h2>
+<p>Parameters about training proccess and agents</p>
+<section id="base-yml">
+<h3>base.yml<a class="headerlink" href="#base-yml" title="Permalink to this heading">¶</a></h3>
+<p>common parameters of the framework</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="p">:</span>
+  <span class="n">description</span><span class="p">:</span> <span class="n">Use</span> <span class="n">RL</span> <span class="n">methods</span> <span class="n">to</span> <span class="n">optimize</span> <span class="n">traffic</span> <span class="n">signal</span> <span class="n">control</span> <span class="n">problem</span>
+  <span class="n">task_name</span><span class="p">:</span> <span class="n">tsc</span>
+<span class="n">world</span><span class="p">:</span>
+<span class="c1"># necessary and distinctive parameters for simulators</span>
+  <span class="n">interval</span><span class="p">:</span> <span class="mf">1.0</span>
+  <span class="n">seed</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="nb">dir</span><span class="p">:</span> <span class="n">data</span><span class="o">/</span>
+
+  <span class="n">saveReplay</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">report_log_mode</span><span class="p">:</span> <span class="n">normal</span> <span class="c1"># cbengine</span>
+  <span class="n">report_log_rate</span><span class="p">:</span> <span class="mi">10</span>
+
+  <span class="n">no_warning</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">gui</span><span class="p">:</span> <span class="kc">False</span>
+
+  <span class="n">rlTrafficLight</span><span class="p">:</span> <span class="kc">True</span>
+
+<span class="n">trainer</span><span class="p">:</span>
+  <span class="n">thread</span><span class="p">:</span> <span class="mi">4</span>
+  <span class="n">ngpu</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="n">learning_start</span><span class="p">:</span> <span class="mi">5000</span>
+  <span class="n">buffer_size</span><span class="p">:</span> <span class="mi">5000</span>
+  <span class="n">steps</span><span class="p">:</span> <span class="mi">3600</span>
+  <span class="n">test_steps</span><span class="p">:</span> <span class="mi">3600</span>
+  <span class="n">yellow_length</span><span class="p">:</span> <span class="mi">5</span>
+  <span class="n">action_interval</span><span class="p">:</span> <span class="mi">10</span>
+  <span class="n">episodes</span><span class="p">:</span> <span class="mi">200</span>
+  <span class="n">update_model_rate</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">update_target_rate</span><span class="p">:</span> <span class="mi">10</span>
+  <span class="n">test_when_train</span><span class="p">:</span> <span class="kc">True</span>
+
+<span class="n">model</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;non-rl&quot;</span>
+  <span class="n">train_model</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">test_model</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">load_model</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">graphic</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">vehicle_max</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">learning_rate</span><span class="p">:</span> <span class="mf">0.001</span>
+  <span class="n">batch_size</span><span class="p">:</span> <span class="mi">64</span>
+  <span class="n">gamma</span><span class="p">:</span> <span class="mf">0.95</span>
+  <span class="n">epsilon</span><span class="p">:</span> <span class="mf">0.5</span>
+  <span class="n">epsilon_decay</span><span class="p">:</span> <span class="mf">0.99</span>
+  <span class="n">epsilon_min</span><span class="p">:</span> <span class="mf">0.05</span>
+  <span class="n">grad_clip</span><span class="p">:</span> <span class="mf">5.0</span>
+
+  <span class="n">one_hot</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">phase</span><span class="p">:</span> <span class="kc">False</span>
+
+<span class="n">logger</span><span class="p">:</span>
+  <span class="n">root_dir</span><span class="p">:</span> <span class="s2">&quot;data/output_data/&quot;</span>
+  <span class="n">log_dir</span><span class="p">:</span> <span class="s2">&quot;logger/&quot;</span>
+  <span class="n">replay_dir</span><span class="p">:</span> <span class="s2">&quot;replay/&quot;</span>
+  <span class="n">model_dir</span><span class="p">:</span> <span class="s2">&quot;model/&quot;</span>
+  <span class="n">data_dir</span><span class="p">:</span> <span class="s2">&quot;dataset/&quot;</span>
+  <span class="n">save_model</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">save_rate</span><span class="p">:</span> <span class="mi">200</span>
+  <span class="n">attention</span><span class="p">:</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Task</p>
+<ul>
+<li><p>description: description of task</p></li>
+<li><p>task_name: task name</p></li>
+</ul>
+</li>
+<li><p>World</p>
+<ul>
+<li><p>interval: time of each simulation step (in seconds).</p></li>
+<li><p>seed: random seed.</p></li>
+<li><p>dir: root directory, all file path will be relative to this directory.</p></li>
+<li><p>saveReplay: whether to save simulation for replay. Used for CityFlow.</p></li>
+<li><p><strong>report_log_mode:</strong></p></li>
+<li><p>report_log_rate: rate of report log.</p></li>
+<li><p><strong>no_warning:</strong></p></li>
+<li><p>gui: whether use SUMO-GUI tools</p></li>
+<li><p>rlTrafficLight: whether to enable traffic light control through python API. If set to false, default traffic light plan defined in roadnetFile will be used.</p></li>
+</ul>
+</li>
+<li><p>Trainer</p>
+<ul>
+<li><p>thread: number of threads.</p></li>
+<li><p>ngpu: number of gpu to be used.</p></li>
+<li><p>learning_start: how many steps start to update model.</p></li>
+<li><p>buffer_size: size of memory buffer.</p></li>
+<li><p>steps: number of training steps in one episode.</p></li>
+<li><p>test_steps: number of test steps in one episode.</p></li>
+<li><p>yellow_length: yellow time.</p></li>
+<li><p>action_interval: time interval to perform actions.</p></li>
+<li><p>episodes: number of one complete process.</p></li>
+<li><p>update_model_rate: rate of updating model.</p></li>
+<li><p>update_target_rate: rate of updating target model.</p></li>
+<li><p>test_when_train: whether to test model after each episode.</p></li>
+</ul>
+</li>
+<li><p>Model</p>
+<ul>
+<li><p>name: type of model, support non-rl and rl models.</p></li>
+<li><p>train_model: whether to train model, False for non-rl models, True for rl models.</p></li>
+<li><p>test_model: whether to test model.</p></li>
+<li><p>load_model: whether to load pretrained model.</p></li>
+<li><p>graphic: whether to use graph to train model. Now it support DGL.</p></li>
+<li><p><strong>vehicle_max:</strong></p></li>
+<li><p>learning_rate: the step size at each iteration while moving toward a minimum of a loss function.</p></li>
+<li><p>batch_size: the number of samples utilized in one iteration.</p></li>
+<li><p>gamma: discount factor.</p></li>
+<li><p>epsilon: probability of random actions.</p></li>
+<li><p>epsilon_decay: decay of  epsilon on the next training episode.</p></li>
+<li><p>epsilon_min: minimum value of epsilon.</p></li>
+<li><p>grad_clip: clip gradients according to this parameter.</p></li>
+<li><p>one_hot: whether to encode phase.</p></li>
+<li><p>phase: whether to add phase into model’s feature.</p></li>
+</ul>
+</li>
+<li><p>Logger</p>
+<ul>
+<li><p>root_dir: root directory, all file path of output data will be relative to this directory.</p></li>
+<li><p>log_dir: root directory of logger.</p></li>
+<li><p>replay_dir: root directory of replay.</p></li>
+<li><p>model_dir: root directory of model.</p></li>
+<li><p>data_dir: root directory of dataset.</p></li>
+<li><p>save_model: whether to save model’s parameters.</p></li>
+<li><p>save_rate: rate of saving related parameters.</p></li>
+<li><p><strong>attention:</strong></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Note:</strong> The value of common parameters will be overwritten if it appears in a model file when loading parameters in training process.</p>
+</section>
+<section id="fixedtime-yml">
+<h3>FixedTime.yml<a class="headerlink" href="#fixedtime-yml" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">includes</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">configs</span><span class="o">/</span><span class="n">tsc</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">model</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">fixedtime</span>
+  <span class="n">t_fixed</span><span class="p">:</span> <span class="mi">10</span>
+
+<span class="n">trainer</span><span class="p">:</span>
+  <span class="n">episodes</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">buffer_size</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">action_interval</span><span class="p">:</span> <span class="mi">10</span>
+  <span class="n">learning_rate</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">learning_start</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">update_model_rate</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">update_target_rate</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">logger</span><span class="p">:</span>
+  <span class="n">save_rate</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">train_model</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">test_model</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">load_model</span><span class="p">:</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+<section id="maxpressure-yml">
+<h3>MaxPressure.yml<a class="headerlink" href="#maxpressure-yml" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">includes</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">configs</span><span class="o">/</span><span class="n">tsc</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">model</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">maxpressure</span>
+  <span class="n">t_min</span><span class="p">:</span> <span class="mi">10</span>
+
+<span class="n">trainer</span><span class="p">:</span>
+  <span class="n">buffer_size</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">action_interval</span><span class="p">:</span> <span class="mi">10</span>
+  <span class="n">learning_rate</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">learning_start</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">update_model_rate</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">update_target_rate</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">logger</span><span class="p">:</span>
+  <span class="n">save_rate</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">train_model</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">test_model</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">load_model</span><span class="p">:</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>t_min:</strong></p></li>
+</ul>
+</section>
+<section id="sotl-yml">
+<h3>SOTL.yml<a class="headerlink" href="#sotl-yml" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">includes</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">configs</span><span class="o">/</span><span class="n">tsc</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">model</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">sotl</span>
+  <span class="n">min_green_vehicle</span><span class="p">:</span> <span class="mi">3</span>
+  <span class="n">max_red_vehicle</span><span class="p">:</span> <span class="mi">6</span>
+  <span class="n">t_min</span><span class="p">:</span> <span class="mi">5</span>
+
+<span class="n">trainer</span><span class="p">:</span>
+  <span class="n">episodes</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">buffer_size</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">learning_rate</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">learning_start</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">update_model_rate</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">update_target_rate</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">logger</span><span class="p">:</span>
+  <span class="n">save_rate</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">train_model</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">test_model</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">load_model</span><span class="p">:</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+<section id="idqn-yml">
+<h3>IDQN.yml<a class="headerlink" href="#idqn-yml" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">includes</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">configs</span><span class="o">/</span><span class="n">tsc</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">model</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">dqn</span>
+  <span class="n">train_model</span><span class="p">:</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+<section id="mapg-yml">
+<h3>MAPG.yml<a class="headerlink" href="#mapg-yml" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">includes</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">configs</span><span class="o">/</span><span class="n">tsc</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">model</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">magd</span>
+  <span class="n">train_model</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">local_q_learn</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">tau</span><span class="p">:</span> <span class="mf">0.01</span>
+  <span class="n">learning_rate</span><span class="p">:</span> <span class="mf">0.01</span>
+  <span class="n">batch_size</span><span class="p">:</span> <span class="mi">256</span>
+  <span class="n">grad_clip</span><span class="p">:</span> <span class="mf">0.5</span>
+  <span class="n">epsilon</span><span class="p">:</span> <span class="mf">0.5</span>
+  <span class="n">epsilon_decay</span><span class="p">:</span> <span class="mf">0.998</span>
+  <span class="n">epsilon_min</span><span class="p">:</span> <span class="mf">0.05</span>
+
+<span class="n">trainer</span><span class="p">:</span>
+  <span class="n">episodes</span><span class="p">:</span> <span class="mi">2000</span>
+  <span class="n">update_model_rate</span><span class="p">:</span> <span class="mi">30</span>
+  <span class="n">update_target_rate</span><span class="p">:</span> <span class="mi">30</span>
+  <span class="n">action_interval</span><span class="p">:</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</section>
+<section id="ippo-yml">
+<h3>IPPO.yml<a class="headerlink" href="#ippo-yml" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">includes</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">configs</span><span class="o">/</span><span class="n">tsc</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">model</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">ppo</span>
+  <span class="n">graphic</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">vehicle_max</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">learning_rate</span><span class="p">:</span> <span class="mf">0.001</span>
+  <span class="n">update_interval</span><span class="p">:</span> <span class="mi">1024</span>
+  <span class="n">batch_size</span><span class="p">:</span> <span class="mi">64</span>
+  <span class="n">gamma</span><span class="p">:</span> <span class="mf">0.95</span>
+  <span class="n">epsilon</span><span class="p">:</span> <span class="mf">0.1</span>
+  <span class="n">epsilon_decay</span><span class="p">:</span> <span class="mf">0.995</span>
+  <span class="n">epsilon_min</span><span class="p">:</span> <span class="mf">0.01</span>
+  <span class="n">grad_clip</span><span class="p">:</span> <span class="mf">5.0</span>
+  <span class="n">NEIGHBOR_NUM</span><span class="p">:</span> <span class="mi">4</span>
+  <span class="n">NEIGHBOR_EDGE_NUM</span><span class="p">:</span> <span class="mi">4</span>
+
+<span class="n">trainer</span><span class="p">:</span>
+  <span class="n">learning_start</span><span class="p">:</span> <span class="mi">1000</span>
+  <span class="n">buffer_size</span><span class="p">:</span> <span class="mi">1024</span>
+</pre></div>
+</div>
+</section>
+<section id="presslight-yml">
+<h3>PressLight.yml<a class="headerlink" href="#presslight-yml" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">includes</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">configs</span><span class="o">/</span><span class="n">tsc</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">model</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">presslight</span>
+  <span class="n">train_model</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">d_dense</span><span class="p">:</span> <span class="mi">20</span>
+  <span class="n">epsilon</span><span class="p">:</span> <span class="mf">0.1</span>
+  <span class="n">epsilon_decay</span><span class="p">:</span> <span class="mf">0.995</span>
+  <span class="n">epsilon_min</span><span class="p">:</span> <span class="mf">0.01</span>
+  <span class="n">one_hot</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">phase</span><span class="p">:</span> <span class="kc">True</span>
+
+<span class="n">trainer</span><span class="p">:</span>
+  <span class="n">learning_start</span><span class="p">:</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</section>
+<section id="colight-yml">
+<h3>CoLight.yml<a class="headerlink" href="#colight-yml" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">includes</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">configs</span><span class="o">/</span><span class="n">tsc</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">model</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">colight</span>
+  <span class="n">graphic</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">vehicle_max</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">learning_rate</span><span class="p">:</span> <span class="mf">0.001</span>
+  <span class="n">batch_size</span><span class="p">:</span> <span class="mi">64</span>
+  <span class="n">gamma</span><span class="p">:</span> <span class="mf">0.95</span>
+  <span class="n">epsilon</span><span class="p">:</span> <span class="mf">0.8</span>
+  <span class="n">epsilon_decay</span><span class="p">:</span> <span class="mf">0.9995</span>
+  <span class="n">epsilon_min</span><span class="p">:</span> <span class="mf">0.01</span>
+  <span class="n">grad_clip</span><span class="p">:</span> <span class="mf">5.0</span>
+  <span class="n">NEIGHBOR_NUM</span><span class="p">:</span> <span class="mi">4</span>
+  <span class="n">NEIGHBOR_EDGE_NUM</span><span class="p">:</span> <span class="mi">4</span>
+  <span class="n">N_LAYERS</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">INPUT_DIM</span><span class="p">:</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">]</span>
+  <span class="n">OUTPUT_DIM</span><span class="p">:</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">]</span>
+  <span class="n">NODE_EMB_DIM</span><span class="p">:</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">]</span>
+  <span class="n">NUM_HEADS</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+  <span class="n">NODE_LAYER_DIMS_EACH_HEAD</span><span class="p">:</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+  <span class="n">OUTPUT_LAYERS</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="n">one_hot</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">phase</span><span class="p">:</span> <span class="kc">False</span>
+
+<span class="n">trainer</span><span class="p">:</span>
+  <span class="n">learning_start</span><span class="p">:</span> <span class="mi">1000</span>
+  <span class="n">train_model</span><span class="p">:</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+<section id="frap-yml">
+<h3>FRAP.yml<a class="headerlink" href="#frap-yml" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">includes</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">configs</span><span class="o">/</span><span class="n">agents</span><span class="o">/</span><span class="n">tsc</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">model</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">frap</span>
+  <span class="n">n_layers</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">rotation</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">conflict_matrix</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">merge</span><span class="p">:</span> <span class="n">multiply</span>
+  <span class="n">d_dense</span><span class="p">:</span> <span class="mi">20</span>
+  <span class="n">learning_rate</span><span class="p">:</span> <span class="mf">0.001</span>
+  <span class="n">batch_size</span><span class="p">:</span> <span class="mi">64</span>
+  <span class="n">gamma</span><span class="p">:</span> <span class="mf">0.95</span>
+  <span class="n">epsilon</span><span class="p">:</span> <span class="mf">0.1</span>
+  <span class="n">epsilon_decay</span><span class="p">:</span> <span class="mf">0.995</span>
+  <span class="n">epsilon_min</span><span class="p">:</span> <span class="mf">0.01</span>
+  <span class="n">grad_clip</span><span class="p">:</span> <span class="mf">5.0</span>
+  <span class="n">demand_shape</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">one_hot</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">phase</span><span class="p">:</span> <span class="kc">True</span>
+
+<span class="n">trainer</span><span class="p">:</span> 
+  <span class="n">learning_start</span><span class="p">:</span> <span class="mi">1000</span>
+  <span class="n">train_model</span><span class="p">:</span> <span class="kc">True</span>
+
+<span class="n">world</span><span class="p">:</span>
+  <span class="n">phases</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NT_ST&#39;</span><span class="p">,</span><span class="s1">&#39;WT_ET&#39;</span><span class="p">,</span><span class="s1">&#39;NL_SL&#39;</span><span class="p">,</span><span class="s1">&#39;WL_EL&#39;</span><span class="p">,</span><span class="s1">&#39;NL_NT&#39;</span><span class="p">,</span><span class="s1">&#39;SL_ST&#39;</span><span class="p">,</span><span class="s1">&#39;WL_WT&#39;</span><span class="p">,</span><span class="s1">&#39;EL_ET&#39;</span><span class="p">]</span>
+  
+  <span class="n">list_lane_order</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ET&#39;</span><span class="p">,</span><span class="s1">&#39;EL&#39;</span><span class="p">,</span><span class="s1">&#39;ST&#39;</span><span class="p">,</span><span class="s1">&#39;SL&#39;</span><span class="p">,</span><span class="s1">&#39;WT&#39;</span><span class="p">,</span><span class="s1">&#39;WL&#39;</span><span class="p">,</span><span class="s1">&#39;NT&#39;</span><span class="p">,</span><span class="s1">&#39;NL&#39;</span><span class="p">]</span>
+
+  <span class="n">phase_expansion</span><span class="p">:</span> <span class="p">{</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="mi">7</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+  <span class="p">}</span>
+
+  <span class="n">phase_expansion_4_lane</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]}</span>
+
+  <span class="n">signal_config</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">grid4x4</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">phase_pairs</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>
+      <span class="n">valid_acts</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="n">cf_order</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+      <span class="n">sumo_order</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">hz1x1</span><span class="p">:</span> <span class="p">{</span>
+      <span class="c1"># phases: [&#39;ET_WT&#39;,&#39;NT_ST&#39;,&#39;EL_WL&#39;,&#39;NL_SL&#39;,&#39;WL_WT&#39;,&#39;EL_ET&#39;,&#39;SL_ST&#39;,&#39;NL_NT&#39;]</span>
+      <span class="n">phase_pairs</span><span class="p">:</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+      <span class="c1"># phases: [&#39;NT_ST&#39;,&#39;WT_ET&#39;,&#39;NL_SL&#39;,&#39;WL_EL&#39;,&#39;NL_NT&#39;,&#39;SL_ST&#39;,&#39;WL_WT&#39;,&#39;EL_ET&#39;]</span>
+      <span class="c1"># phase_pairs: [[1, 5], [3, 7], [0, 4], [2, 6], [0, 1], [4, 5], [6, 7], [2, 3]],</span>
+      <span class="n">valid_acts</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="n">cf_order</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+      <span class="n">sumo_order</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">hz4x4</span><span class="p">:</span> <span class="p">{</span>
+      <span class="c1"># phases: [&#39;NT_ST&#39;,&#39;WT_ET&#39;,&#39;NL_SL&#39;,&#39;WL_EL&#39;,&#39;NL_NT&#39;,&#39;SL_ST&#39;,&#39;WL_WT&#39;,&#39;EL_ET&#39;]</span>
+      <span class="n">phase_pairs</span><span class="p">:</span> <span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+      <span class="n">valid_acts</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="n">cf_order</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="p">},</span>
+      <span class="n">sumo_order</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">cologne1</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">phase_pairs</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span>
+      <span class="n">valid_acts</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="n">cf_order</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+      <span class="n">sumo_order</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">cologne3</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">phase_pairs</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]],</span>
+      <span class="n">valid_acts</span><span class="p">:</span> <span class="p">{</span>
+        <span class="n">GS_cluster_2415878664_254486231_359566_359576</span><span class="p">:</span> <span class="p">{</span><span class="mi">4</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+        <span class="mi">360086</span><span class="p">:</span> <span class="p">{</span><span class="mi">4</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+        <span class="mi">360082</span><span class="p">:</span> <span class="p">{</span><span class="mi">4</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+      <span class="p">},</span>
+      <span class="n">cf_order</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;360082&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+        <span class="s1">&#39;360086&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+        <span class="s1">&#39;cluster_2415878664_254486231_359566_359576&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+        <span class="p">},</span>
+      <span class="n">sumo_order</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;360082&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="s1">&#39;360086&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="s1">&#39;cluster_2415878664_254486231_359566_359576&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="mplight-yml">
+<h3>MPLight.yml<a class="headerlink" href="#mplight-yml" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">includes</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">configs</span><span class="o">/</span><span class="n">tsc</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">model</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">mplight</span>
+  <span class="n">train_model</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">n_layers</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">rotation</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">conflict_matrix</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">merge</span><span class="p">:</span> <span class="n">multiply</span>
+  <span class="n">d_dense</span><span class="p">:</span> <span class="mi">20</span>
+  <span class="n">learning_rate</span><span class="p">:</span> <span class="mf">0.001</span>
+  <span class="n">batch_size</span><span class="p">:</span> <span class="mi">32</span>
+  <span class="n">gamma</span><span class="p">:</span> <span class="mf">0.99</span>
+  <span class="n">eps_start</span><span class="p">:</span> <span class="mf">1.0</span>
+  <span class="n">eps_end</span><span class="p">:</span> <span class="mf">0.0</span>
+  <span class="n">eps_decay</span><span class="p">:</span> <span class="mi">220</span>
+  <span class="n">target_update</span><span class="p">:</span> <span class="mi">500</span>
+  <span class="n">demand_shape</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">phase</span><span class="p">:</span> <span class="kc">True</span>
+
+<span class="n">trainer</span><span class="p">:</span> 
+  <span class="n">learning_start</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="n">buffer_size</span><span class="p">:</span> <span class="mi">10000</span>
+
+<span class="n">world</span><span class="p">:</span>
+  <span class="n">phases</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NT_ST&#39;</span><span class="p">,</span><span class="s1">&#39;WT_ET&#39;</span><span class="p">,</span><span class="s1">&#39;NL_SL&#39;</span><span class="p">,</span><span class="s1">&#39;WL_EL&#39;</span><span class="p">,</span><span class="s1">&#39;NL_NT&#39;</span><span class="p">,</span><span class="s1">&#39;SL_ST&#39;</span><span class="p">,</span><span class="s1">&#39;WL_WT&#39;</span><span class="p">,</span><span class="s1">&#39;EL_ET&#39;</span><span class="p">]</span>
+  
+  <span class="n">list_lane_order</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ET&#39;</span><span class="p">,</span><span class="s1">&#39;EL&#39;</span><span class="p">,</span><span class="s1">&#39;ST&#39;</span><span class="p">,</span><span class="s1">&#39;SL&#39;</span><span class="p">,</span><span class="s1">&#39;WT&#39;</span><span class="p">,</span><span class="s1">&#39;WL&#39;</span><span class="p">,</span><span class="s1">&#39;NT&#39;</span><span class="p">,</span><span class="s1">&#39;NL&#39;</span><span class="p">]</span>
+
+  <span class="n">phase_expansion</span><span class="p">:</span> <span class="p">{</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="mi">7</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+  <span class="p">}</span>
+
+  <span class="n">phase_expansion_4_lane</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]}</span>
+
+  <span class="n">signal_config</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">grid4x4</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">phase_pairs</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>
+      <span class="n">valid_acts</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">},</span>
+    <span class="n">cityflow1x1</span><span class="p">:</span> <span class="p">{</span>
+      <span class="c1"># phases: [&#39;ET_WT&#39;,&#39;NT_ST&#39;,&#39;EL_WL&#39;,&#39;NL_SL&#39;,&#39;WL_WT&#39;,&#39;EL_ET&#39;,&#39;SL_ST&#39;,&#39;NL_NT&#39;]</span>
+      <span class="c1"># phase_pairs: [[3, 7], [1, 5], [2, 6], [0, 4], [6, 7], [2, 3], [4, 5], [0, 1]],</span>
+      <span class="c1"># phases: [&#39;NT_ST&#39;,&#39;WT_ET&#39;,&#39;NL_SL&#39;,&#39;WL_EL&#39;,&#39;NL_NT&#39;,&#39;SL_ST&#39;,&#39;WL_WT&#39;,&#39;EL_ET&#39;]</span>
+      <span class="n">phase_pairs</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span>
+      <span class="n">valid_acts</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">},</span>
+    <span class="n">cityflow4x4</span><span class="p">:</span> <span class="p">{</span>
+      <span class="c1"># phases: [&#39;NT_ST&#39;,&#39;WT_ET&#39;,&#39;NL_SL&#39;,&#39;WL_EL&#39;,&#39;NL_NT&#39;,&#39;SL_ST&#39;,&#39;WL_WT&#39;,&#39;EL_ET&#39;]</span>
+      <span class="n">phase_pairs</span><span class="p">:</span> <span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+      <span class="n">valid_acts</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">},</span>
+    <span class="n">cologne1</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">phase_pairs</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">]],</span>
+      <span class="n">valid_acts</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">},</span>
+    <span class="n">cologne3</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">phase_pairs</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]],</span>
+      <span class="n">valid_acts</span><span class="p">:</span> <span class="p">{</span>
+        <span class="n">GS_cluster_2415878664_254486231_359566_359576</span><span class="p">:</span> <span class="p">{</span><span class="mi">4</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+        <span class="mi">360086</span><span class="p">:</span> <span class="p">{</span><span class="mi">4</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+        <span class="mi">360082</span><span class="p">:</span> <span class="p">{</span><span class="mi">4</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, DaRL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
