@@ -1,5 +1,7 @@
 # Install
 
+We also provide Colab version, please visit [Colab Tutorial](https://colab.research.google.com/drive/1FrMTRsbSkZGAeN-Mh4PqWMI-SrDM3J7w?usp=share_link).
+
 ## Source
 
 LibSingal provides installation from source code.
