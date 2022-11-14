@@ -3,13 +3,110 @@
 ## Install on your device with Source Code
 
 LibSingal provides installation from source code.
-Please execute the following command to install and configure  our environment.
-
+Please execute the following command to install and configure  our environment.   
+**First, despite any OS**(Linux, Windows, MacOS, etc), you need to **get our source code**:
 ```---
 mkdir DaRL
 cd DaRL
-git clone git@github.com:DaRL-LibSignal/LibSignal.git
+git clone --branch doc_ver https://github.com/DaRL-LibSignal/LibSignal.git
+cd LibSignal
 ```
+Use anaconda to manage your environment and package, 
+If you don't have one, see [here](https://www.anaconda.com/products/distribution)
+Then please find your corresponding platform and follow instructions below:
+
+### On MacOS
+create your own conda environment:
+```angular2html
+conda create -n testlibsignal python=3.7
+conda activate testlibsignal
+```
+Open the command line and Install the required env info:
+```angular2html
+pip install -r requirements.txt
+```
+```angular2html
+pip install cmake
+```
+Install the [pytorch](https://pytorch.org/get-started/locally/) that suits your machine, or simplest way:  
+```angular2html
+pip install torch
+```
+
+If you encounter problem like: 'EntryPoints' object has no attribute 'get', please do follow:
+```angular2html
+pip install importlib-metadata==4.13.0
+pip install pfrl
+```
+Then when you conduct 
+```angular2html
+python run.py
+```
+You are expected to see '**ModuleNotFoundError: No module named 'cityflow**', that's what we are doing next:  
+Install **cityflow** follow the instructions [here](https://cityflow.readthedocs.io/en/latest/install.html) or simplest way:
+```angular2html
+git clone https://github.com/cityflow-project/CityFlow.git
+cd CityFlow
+pip install .
+```
+Then go one step back to the root folder of Libsignal where stores "run.py" and run again by
+```angular2html
+cd ..
+python run.py
+```
+you can also run the file in your IDE!
+Congrats，your first attempt is successful! 🎉🎉🎉
+
+### On Linux
+Install **cityflow** follow the instructions [here](https://cityflow.readthedocs.io/en/latest/install.html):
+
+Install **sumo** follow the instructions [here](https://sumo.dlr.de/docs/Downloads.php):   
+
+
+Stay at the root folder of cloned repository, and then  
+Open the command line and Install the required env info:
+```angular2html
+pip install -r requirements.txt
+```
+```angular2html
+pip install cmake
+```
+If you found something missing, eg: lmdb, install as follow:
+```angular2html
+pip install lmdb
+```
+One Click from run.py with default configurations:
+As an example, we set DQN with cityflow as default
+detailed config settings can be found at [Document](https://darl-libsignal.github.io/LibSignalDoc/content/getstart/Install.html)
+
+### On Windows
+Please use WSL or Docker first:  
+install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)  
+
+install [Docker](https://docs.docker.com/desktop/install/windows-install/)
+
+Install **cityflow** follow the instructions [here](https://cityflow.readthedocs.io/en/latest/install.html)  
+
+Install **sumo** follow the instructions [here](https://sumo.dlr.de/docs/Downloads.php)    
+
+
+Stay at the root folder of cloned repository, and then  
+Open the command line and Install the required env info:
+```angular2html
+pip install -r requirements.txt
+```
+```angular2html
+pip install cmake
+```
+If you found something missing, eg: lmdb, install as follow:
+```angular2html
+pip install lmdb
+```
+One Click from run.py with default configurations:
+As an example, we set DQN with cityflow as default
+detailed config settings can be found at [Document](https://darl-libsignal.github.io/LibSignalDoc/content/getstart/Install.html)
+
+
 
 ## Simulator environment configuration
 <br />

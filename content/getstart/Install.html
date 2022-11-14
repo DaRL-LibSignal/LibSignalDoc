@@ -44,7 +44,12 @@
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Install</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#hands-on-experiencecolab">Hands on Experience👉Colab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-on-your-device-with-source-code">Install on your device with Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-on-your-device-with-source-code">Install on your device with Source Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#on-macos">On MacOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#on-linux">On Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#on-windows">On Windows</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#simulator-environment-configuration">Simulator environment configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cityflow-environment">CityFlow Environment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sumo-environment">SUMO Environment</a></li>
@@ -112,12 +117,102 @@
 <section id="install-on-your-device-with-source-code">
 <h2>Install on your device with Source Code<a class="headerlink" href="#install-on-your-device-with-source-code" title="Permalink to this heading">¶</a></h2>
 <p>LibSingal provides installation from source code.
-Please execute the following command to install and configure  our environment.</p>
+Please execute the following command to install and configure  our environment.<br />
+<strong>First, despite any OS</strong>(Linux, Windows, MacOS, etc), you need to <strong>get our source code</strong>:</p>
 <div class="highlight---- notranslate"><div class="highlight"><pre><span></span>mkdir DaRL
 cd DaRL
-git clone git@github.com:DaRL-LibSignal/LibSignal.git
+git clone --branch doc_ver https://github.com/DaRL-LibSignal/LibSignal.git
+cd LibSignal
 </pre></div>
 </div>
+<p>Use anaconda to manage your environment and package,
+If you don’t have one, see <a class="reference external" href="https://www.anaconda.com/products/distribution">here</a>
+Then please find your corresponding platform and follow instructions below:</p>
+<section id="on-macos">
+<h3>On MacOS<a class="headerlink" href="#on-macos" title="Permalink to this heading">¶</a></h3>
+<p>create your own conda environment:</p>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>conda create -n testlibsignal python=3.7
+conda activate testlibsignal
+</pre></div>
+</div>
+<p>Open the command line and Install the required env info:</p>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
+</pre></div>
+</div>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>pip install cmake
+</pre></div>
+</div>
+<p>Install the <a class="reference external" href="https://pytorch.org/get-started/locally/">pytorch</a> that suits your machine, or simplest way:</p>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>pip install torch
+</pre></div>
+</div>
+<p>If you encounter problem like: ‘EntryPoints’ object has no attribute ‘get’, please do follow:</p>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>pip install importlib-metadata==4.13.0
+pip install pfrl
+</pre></div>
+</div>
+<p>Then when you conduct</p>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>python run.py
+</pre></div>
+</div>
+<p>You are expected to see ‘<strong>ModuleNotFoundError: No module named ‘cityflow</strong>’, that’s what we are doing next:<br />
+Install <strong>cityflow</strong> follow the instructions <a class="reference external" href="https://cityflow.readthedocs.io/en/latest/install.html">here</a> or simplest way:</p>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/cityflow-project/CityFlow.git
+cd CityFlow
+pip install .
+</pre></div>
+</div>
+<p>Then go one step back to the root folder of Libsignal where stores “run.py” and run again by</p>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>cd ..
+python run.py
+</pre></div>
+</div>
+<p>you can also run the file in your IDE!
+Congrats，your first attempt is successful! 🎉🎉🎉</p>
+</section>
+<section id="on-linux">
+<h3>On Linux<a class="headerlink" href="#on-linux" title="Permalink to this heading">¶</a></h3>
+<p>Install <strong>cityflow</strong> follow the instructions <a class="reference external" href="https://cityflow.readthedocs.io/en/latest/install.html">here</a>:</p>
+<p>Install <strong>sumo</strong> follow the instructions <a class="reference external" href="https://sumo.dlr.de/docs/Downloads.php">here</a>:</p>
+<p>Stay at the root folder of cloned repository, and then<br />
+Open the command line and Install the required env info:</p>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
+</pre></div>
+</div>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>pip install cmake
+</pre></div>
+</div>
+<p>If you found something missing, eg: lmdb, install as follow:</p>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>pip install lmdb
+</pre></div>
+</div>
+<p>One Click from run.py with default configurations:
+As an example, we set DQN with cityflow as default
+detailed config settings can be found at <a class="reference external" href="https://darl-libsignal.github.io/LibSignalDoc/content/getstart/Install.html">Document</a></p>
+</section>
+<section id="on-windows">
+<h3>On Windows<a class="headerlink" href="#on-windows" title="Permalink to this heading">¶</a></h3>
+<p>Please use WSL or Docker first:<br />
+install <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install">WSL</a></p>
+<p>install <a class="reference external" href="https://docs.docker.com/desktop/install/windows-install/">Docker</a></p>
+<p>Install <strong>cityflow</strong> follow the instructions <a class="reference external" href="https://cityflow.readthedocs.io/en/latest/install.html">here</a></p>
+<p>Install <strong>sumo</strong> follow the instructions <a class="reference external" href="https://sumo.dlr.de/docs/Downloads.php">here</a></p>
+<p>Stay at the root folder of cloned repository, and then<br />
+Open the command line and Install the required env info:</p>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
+</pre></div>
+</div>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>pip install cmake
+</pre></div>
+</div>
+<p>If you found something missing, eg: lmdb, install as follow:</p>
+<div class="highlight-angular2html notranslate"><div class="highlight"><pre><span></span>pip install lmdb
+</pre></div>
+</div>
+<p>One Click from run.py with default configurations:
+As an example, we set DQN with cityflow as default
+detailed config settings can be found at <a class="reference external" href="https://darl-libsignal.github.io/LibSignalDoc/content/getstart/Install.html">Document</a></p>
+</section>
 </section>
 <section id="simulator-environment-configuration">
 <h2>Simulator environment configuration<a class="headerlink" href="#simulator-environment-configuration" title="Permalink to this heading">¶</a></h2>
