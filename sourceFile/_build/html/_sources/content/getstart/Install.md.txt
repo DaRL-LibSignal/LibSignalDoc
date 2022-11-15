@@ -80,6 +80,7 @@ As an example, we set DQN with cityflow as default
 detailed config settings can be found at [Document](https://darl-libsignal.github.io/LibSignalDoc/content/getstart/Install.html)
 
 ### On Windows
+You could visit the instructions [Doc](https://docs.google.com/document/d/1O8UbL3kT_bO-v-pwbijvLo7BZGOjlqA_3q-zwANGXqw/edit?usp=sharing) for detailed steps and error solutions.
 Please use WSL or Docker first:  
 install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)  
 
